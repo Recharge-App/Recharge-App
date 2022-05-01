@@ -1,5 +1,6 @@
 import { View, Text, Button } from 'react-native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 
 function Home({ navigation }: { navigation: any }) {
@@ -10,15 +11,5 @@ function Home({ navigation }: { navigation: any }) {
   );
 }
 
-const Tab = createBottomTabNavigator();
-
-function Tabs() {
-  return (
-    <Tab.Navigator>
-      <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Settings" component={SettingsScreen} />
-    </Tab.Navigator>
-  );
-}
 
 export default Home;
