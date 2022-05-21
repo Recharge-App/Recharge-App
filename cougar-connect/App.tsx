@@ -8,7 +8,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 */
 // Custom components
-import SignIn from './src/Screens/SignIn';
+import {SignIn} from './src/Screens/index';
 
 
 
