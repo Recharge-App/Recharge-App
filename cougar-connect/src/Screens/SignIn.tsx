@@ -66,7 +66,8 @@ const styles = StyleSheet.create({
         position: 'absolute',
         width: ScreenWidth * 1.03,
         height: ScreenHeight * 0.66,
-        borderRadius: 100,
+        borderTopLeftRadius: 100,
+        borderTopRightRadius: 100,
         backgroundColor: colors.white,
         bottom: 0,
         padding: 50,
@@ -75,7 +76,7 @@ const styles = StyleSheet.create({
         color: colors.red,
         fontSize: 25,
         fontWeight: 'bold',
-        marginBottom: 10,
+        marginBottom: ScreenHeight / 40,
     },
     signin_text_small: {
         color: colors.grey,

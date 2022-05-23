@@ -84,7 +84,7 @@ function MainTabNavigator({ navigation }: { navigation: any }) {
 function App() {
   return (
   	// Change this to switch between the login screen and the home screen
-	<MainTabNavigator />
+	<SignIn />
 	//<MainStackNavigator />
   );
 }
