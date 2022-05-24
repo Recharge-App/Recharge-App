@@ -22,7 +22,7 @@ const SignIn = () => {
 
                         <View style={styles.button}>
                             <Button
-                                onPress={() => Alert.alert('Simple Button pressed')}
+                                onPress={() => Alert.alert('Logged in')}
                                 title="Login"
                                 color= {colors.white}
                                 accessibilityLabel="Learn more about this purple button"
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
         color: colors.red,
         fontSize: 25,
         fontWeight: 'bold',
-        marginBottom: ScreenHeight / 40,
+        marginBottom: ScreenHeight / 100,
     },
     signin_text_small: {
         color: colors.grey,

@@ -12,7 +12,7 @@ import { Item, HeaderButton, HeaderButtons } from "react-navigation-header-butto
 
 // Custom components
 //import { SignUp, SignIn, Home, Profile, Search } from './src/Screens/index';
-import { SignIn, Home, Profile, Search } from './src/Screens/index';
+import { SignIn, SignUp, Home, Profile, Search } from './src/Screens/index';
 
 
 const Stack = createNativeStackNavigator();
@@ -84,7 +84,7 @@ function MainTabNavigator({ navigation }: { navigation: any }) {
 function App() {
   return (
   	// Change this to switch between the login screen and the home screen
-	<SignIn />
+	<SignUp />
 	//<MainStackNavigator />
   );
 }
