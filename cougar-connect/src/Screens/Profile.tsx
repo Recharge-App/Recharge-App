@@ -1,23 +1,79 @@
-import { View, Text, Button, Image, StyleSheet} from 'react-native';
+import { View, Text, Button, Image, StyleSheet, Dimensions } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { ScreenWidth, ScreenHeight } from '../Components/Dimensions';
+import { colors } from '../Components/Colors';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 
 function Profile({ navigation }: { navigation: any }) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Profile Screen</Text>
-	  <Image style={styles.tinyLogo} source={require("../../assets/profile_pic.jpeg")} />
-    </View>
-  );
+	
+	// Variables
+	let first_name = "Mihir";
+	let last_name = "Sahu";
+	let follows = 100;
+	let following = 50;
+
+	return (
+  	  <View style={styles.root}>
+	  	<View style={styles.header}>
+			<Ionicons style={{alignSelf: 'flex-start', marginLeft: ScreenWidth * .05}} name='md-settings-outline' color={colors.white} size={ScreenHeight* .035}></Ionicons>
+  	    	<Image style={styles.tinyLogo} source={require("../../assets/profile_pic.jpeg")} />
+			<Text style={styles.name}>{ first_name + " " + last_name }</Text>
+			<View style={styles.followView}>
+				<View style={{alignItems: 'center'}}>
+					<Text style={styles.followText}>{follows}</Text>
+					<Text style={styles.followText}>Followers</Text>
+				</View>
+				<View style={{alignItems: 'center'}}>
+					<Text style={styles.followText}>{following}</Text>
+					<Text style={styles.followText}>Following</Text>
+				</View>
+			</View>
+		</View>
+		<View style={styles.footer}>
+			<Text>Recent Activity</Text>
+		</View>
+  	  </View>
+  	);
 }
 
 const styles = StyleSheet.create({
-  tinyLogo: {
-    width: 100,
-    height: 100,
-	borderRadius: 100,
-  },
+	root: {
+		flex: 1, 
+		alignItems: 'center', 
+		justifyContent: 'flex-start',
+		backgroundColor: colors.white,
+		height: ScreenHeight,
+		width: ScreenWidth,
+	},
+	header: {
+		alignItems: 'center', 
+		justifyContent: 'center',
+		backgroundColor: colors.red,
+		height: ScreenHeight * .45,
+		width: ScreenWidth,
+	},
+	tinyLogo: {
+		width: ScreenWidth * .3,
+		height: ScreenHeight * .165,
+		borderRadius: 100,
+	},
+	name: {
+		fontWeight: 'bold',
+		color: colors.white,
+		margin: ScreenHeight * .03,
+	},
+	followView: {
+		flexDirection: 'row',
+		width: ScreenWidth,
+		justifyContent: 'space-evenly',
+	},
+	followText: {
+		color: colors.white,
+	},
+	footer: {
+		backgroundColor: colors.white,
+	},
 });
 
 export default Profile;
-

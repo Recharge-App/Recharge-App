@@ -64,6 +64,7 @@ function MainTabNavigator({ navigation }: { navigation: any }) {
 			 	name="Profile" 
 				component={Profile} 
 				options={{ 
+					headerShown: false,
 					headerRight: () => (
 						//<Button title="Settings" onPress={() => alert("Hello")} />
 						<HeaderButtons>
@@ -84,8 +85,9 @@ function MainTabNavigator({ navigation }: { navigation: any }) {
 function App() {
   return (
   	// Change this to switch between the login screen and the home screen
-	<Onboarding />
+	//<Onboarding />
 	//<MainStackNavigator />
+	<MainTabNavigator />
   );
 }
 
