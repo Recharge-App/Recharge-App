@@ -1,8 +1,9 @@
-import { View, Text, Button, Image, StyleSheet, Dimensions } from 'react-native';
+import { View, Text, Button, Image, StyleSheet, Dimensions, ScrollView } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { ScreenWidth, ScreenHeight } from '../Components/Dimensions';
 import { colors } from '../Components/Colors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import EventCards from '../Components/EventCards';
 
 
 function Profile({ navigation }: { navigation: any }) {
@@ -31,7 +32,10 @@ function Profile({ navigation }: { navigation: any }) {
 			</View>
 		</View>
 		<View style={styles.footer}>
-			<Text>Recent Activity</Text>
+			<Text style={{marginTop: ScreenHeight * .02, fontWeight: 'bold'}}>Recent Activity</Text>
+			<ScrollView showsVerticalScrollIndicator={false}>
+				<EventCards></EventCards>
+			</ScrollView>
 		</View>
   	  </View>
   	);
@@ -66,10 +70,11 @@ const styles = StyleSheet.create({
 	followView: {
 		flexDirection: 'row',
 		width: ScreenWidth,
-		justifyContent: 'space-evenly',
+		justifyContent: 'space-around',
 	},
 	followText: {
 		color: colors.white,
+		fontWeight: 'bold',
 	},
 	footer: {
 		backgroundColor: colors.white,
