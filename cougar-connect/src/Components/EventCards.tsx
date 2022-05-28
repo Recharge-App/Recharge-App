@@ -12,6 +12,11 @@ function EventCards() {
 
 	return (
 		<View style={styles.card}>
+			<View style={styles.textSection}>
+				<Text style={styles.cardText}>{eventName}</Text>
+				<Text style={styles.cardText}>{organizerName}</Text>
+				<Text style={styles.cardText}>{eventLocation}</Text>
+			</View>
 		</View>
 	);
 }
@@ -23,6 +28,14 @@ const styles = StyleSheet.create({
 		height: ScreenHeight * .25,
 		borderRadius: ScreenWidth * .06,
 		borderWidth: ScreenWidth * .005,
+	},
+	textSection: {
+		alignItems: 'flex-end',
+		width: ScreenWidth * .8,
+		height: ScreenHeight * .05,
+	},
+	cardText: {
+		color: colors.red,
 	},
 });
 

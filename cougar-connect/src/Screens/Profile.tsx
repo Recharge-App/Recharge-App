@@ -32,7 +32,7 @@ function Profile({ navigation }: { navigation: any }) {
 			</View>
 		</View>
 		<View style={styles.footer}>
-			<Text style={{marginTop: ScreenHeight * .02, fontWeight: 'bold'}}>Recent Activity</Text>
+			<Text style={styles.recentEventText}>Recent Activity</Text>
 			<ScrollView showsVerticalScrollIndicator={false}>
 				<EventCards></EventCards>
 			</ScrollView>
@@ -78,6 +78,12 @@ const styles = StyleSheet.create({
 	},
 	footer: {
 		backgroundColor: colors.white,
+	},
+	recentEventText: {
+		marginTop: ScreenHeight * .02, 
+		fontWeight: 'bold', 
+		alignSelf: 'center', 
+		marginBottom: ScreenHeight * .02,
 	},
 });
 
