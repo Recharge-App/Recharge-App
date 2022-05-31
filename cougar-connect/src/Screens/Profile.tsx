@@ -1,4 +1,4 @@
-import { View, Text, Button, Image, StyleSheet, Dimensions, ScrollView } from 'react-native';
+import { View, Text, Button, Image, StyleSheet, Dimensions, ScrollView, TouchableOpacity } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { ScreenWidth, ScreenHeight } from '../Components/Dimensions';
 import { colors } from '../Components/Colors';
@@ -17,7 +17,9 @@ function Profile({ navigation }: { navigation: any }) {
 	return (
   	  <View style={styles.root}>
 	  	<View style={styles.header}>
-			<Ionicons style={{alignSelf: 'flex-start', marginLeft: ScreenWidth * .05}} name='md-settings-outline' color={colors.white} size={ScreenHeight* .035}></Ionicons>
+			<TouchableOpacity style={{alignSelf: 'flex-start', marginLeft: ScreenWidth * .05}}>
+				<Ionicons name='md-settings-outline' color={colors.white} size={ScreenHeight* .035}></Ionicons>
+			</TouchableOpacity>
   	    	<Image style={styles.tinyLogo} source={require("../../assets/profile_pic.jpeg")} />
 			<Text style={styles.name}>{ first_name + " " + last_name }</Text>
 			<View style={styles.followView}>
@@ -33,7 +35,7 @@ function Profile({ navigation }: { navigation: any }) {
 		</View>
 		<View style={styles.footer}>
 			<Text style={styles.recentEventText}>Recent Activity</Text>
-			<ScrollView showsVerticalScrollIndicator={false}>
+			<ScrollView style={{height: ScreenHeight * .40 * 5}}>
 				<EventCards></EventCards>
 			</ScrollView>
 		</View>
@@ -60,7 +62,7 @@ const styles = StyleSheet.create({
 	tinyLogo: {
 		width: ScreenWidth * .3,
 		height: ScreenHeight * .165,
-		borderRadius: 100,
+		borderRadius: ScreenWidth * .15,
 	},
 	name: {
 		fontWeight: 'bold',
