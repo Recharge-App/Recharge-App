@@ -1,17 +1,17 @@
-import Home from './Home';
-//import Messages from './Messages.tsx';
-//import Notifications from './Notifications.tsx';
 import Onboarding from './Onboarding';
 import SignIn from './SignIn';
 import SignUp from './SignUp'
-import Profile from './Profile';
+import Home from './Home';
 import Search from './Search';
+import Calendar from './Calendar';
+import Profile from './Profile';
 
 export {
 	Onboarding,
     SignIn,
 	SignUp,
-	Profile,
-	Search,
 	Home,
+	Search,
+	Calendar,
+	Profile,
 };

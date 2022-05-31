@@ -1,11 +1,6 @@
 import React, { useState, useRef } from 'react'
 import { View, Text, StyleSheet, FlatList, Animated } from 'react-native';
-
-// OnboardingItem is like the definition of what a slide is going to look like.
-import OnboardingItem from '../Components/OnboardingItem';
-
-import Paginator from '../Components/Paginator';
-import NextButton from '../Components/NextButton';
+import { OnboardingItem, NextButton, Paginator } from '../Components/index';
 // This is the data we are going to display in the onboarding screen.
 import slides from '../Data/slides';
 

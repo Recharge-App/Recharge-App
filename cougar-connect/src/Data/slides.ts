@@ -7,7 +7,7 @@ export default [
 
 {
     id: '1',
-    title: 'Welcome to Cougar Connect',
+    title: "What's UpCoogs?",
     description: 'All events at the University of Houston in one place, instantly searchable.',
     image: people,
 },

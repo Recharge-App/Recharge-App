@@ -1,5 +1,8 @@
 import * as React from 'react';
-import { SafeAreaView, StyleSheet, View, Text, Button, Appearance } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import Tabs from './src/Navigation/Tabs';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+/*
 import { colors } from './src/Components/Colors';
 
 // Custom components
@@ -53,8 +56,8 @@ function MainTabNavigator({ navigation }: { navigation: any }) {
 
         	  	  return <Ionicons name={iconName} size={size} color={color} />;
         	  	},
-        	  	tabBarInactiveTintColor: '#EF233C',
-        	  	tabBarActiveTintColor: '#EF233C',
+        	  	tabBarInactiveTintColor: colors.red,
+        	  	tabBarActiveTintColor: colors.red,
 				tabBarShowLabel: false,
         	})}
 		  >
@@ -81,13 +84,18 @@ function MainTabNavigator({ navigation }: { navigation: any }) {
     	</NavigationContainer>
 	);
 }
+*/
 
 function App() {
   return (
   	// Change this to switch between the login screen and the home screen
 	//<Onboarding />
 	//<MainStackNavigator />
-	<MainTabNavigator />
+	//<MainTabNavigator />
+		<NavigationContainer>
+			<Tabs />
+		</NavigationContainer>
+
   );
 }
 

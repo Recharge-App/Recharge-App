@@ -7,7 +7,7 @@ const SignIn = () => {
 
     return (
         <View style={styles.root}>
-        <Text style={styles.logo_text}>Cougar Connect</Text>
+        <Text style={styles.logo_text}>UpCoogs</Text>
             <View style={styles.signin}>
                 <Text style={styles.signin_text}>Sign in</Text>
                 <Text style={styles.signin_text_small}>Enter your UH email and password</Text>

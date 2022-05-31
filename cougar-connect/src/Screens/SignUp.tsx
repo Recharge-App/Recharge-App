@@ -7,7 +7,7 @@ const SignUp = () => {
 
     return (
         <View style={styles.root}>
-        <Text style={styles.logo_text}>Cougar Connect</Text>
+        <Text style={styles.logo_text}>UpCoogs</Text>
             <View style={styles.signup}>
                 <Text style={styles.signup_text}>Sign up</Text>
                 <Text style={styles.signup_text_small}>Create your account</Text>
