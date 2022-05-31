@@ -6,6 +6,7 @@ import NextButton from './NextButton';
 import OnboardingItem from './OnboardingItem';
 import Paginator from './Paginator';
 import SearchBar from './SearchBar';
+import TopTab from '../Navigation/TopTab';
 
 export {
 	Colors,
@@ -16,4 +17,5 @@ export {
     OnboardingItem,
     Paginator,
     SearchBar,
+    TopTab,
 };

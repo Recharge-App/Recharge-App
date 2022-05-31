@@ -2,12 +2,16 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { colors } from '../Components/Colors';
 import { Ionicons } from "@expo/vector-icons";
 import { View, TouchableOpacity} from 'react-native';
-
+import { NavigationContainer } from '@react-navigation/native';
 import { Home, Search, Calendar,Profile } from '../Screens/index'
-
+import { SearchBar, TopTab } from '../Components';
 const Tab = createBottomTabNavigator();
 const Tabs = () => {
+
+
     return(
+        <NavigationContainer>            
+
         <Tab.Navigator
             screenOptions={{
                 tabBarShowLabel: false,
@@ -16,8 +20,9 @@ const Tabs = () => {
                     elevation: 0,
                     backgroundColor: colors.white,
                     borderRadius: 15,
-                    height: 90,
+                    height: 50,
                 }
+                
             }}
         >
             <Tab.Screen name="Home" component={Home} options={{
@@ -32,7 +37,7 @@ const Tabs = () => {
                 ),
             }}
             />
-            <Tab.Screen name="Search" component={Search} options={{
+            <Tab.Screen name="Search" component={TopTab} options={{
                 headerShown:false,
                 tabBarIcon: ({focused}) => (
                     <Ionicons name="search-sharp" size={28} 
@@ -63,6 +68,7 @@ const Tabs = () => {
             }}
             />
         </Tab.Navigator>
+        </NavigationContainer>
     )
 }
 

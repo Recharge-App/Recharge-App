@@ -5,7 +5,7 @@ import { Feather, Entypo } from "@expo/vector-icons";
 
 const SearchBar = (props) => {
   return (
-      
+
     <View style={styles.container}>
       <View
         style={
@@ -59,11 +59,11 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     alignItems: "center",
     flexDirection: "row",
-    width: "90%",
+    width: "80%",
     
   },
   searchBar__unclicked: {
-    padding: 10,
+    padding: 8,
     flexDirection: "row",
     width: "95%",
     backgroundColor: "#d9dbda",
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   searchBar__clicked: {
-    padding: 10,
+    padding: 8,
     flexDirection: "row",
     width: "80%",
     backgroundColor: "#d9dbda",
@@ -80,8 +80,8 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
   },
   input: {
-    fontSize: 20,
+    fontSize: 18,
     marginLeft: 10,
-    width: "90%",
+    width: "80%",
   },
 });
