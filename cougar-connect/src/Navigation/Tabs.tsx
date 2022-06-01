@@ -5,24 +5,19 @@ import { View, TouchableOpacity} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { Home, Search, Calendar,Profile } from '../Screens/index'
 import TopTab from './TopTab';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const Tab = createBottomTabNavigator();
 const Tabs = () => {
 
 
     return(
-    
+        //<SafeAreaView style={{flex: 1}}>
         <NavigationContainer>            
 
         <Tab.Navigator
             screenOptions={{
                 tabBarShowLabel: false,
-                tabBarStyle: {
-                    position: 'absolute',
-                    elevation: 0,
-                    backgroundColor: colors.white,
-                    height: 50,
-                }
                 
             }}
         >
@@ -59,7 +54,7 @@ const Tabs = () => {
             }}
             />
             <Tab.Screen name="Profile" component={Profile} options={{
-                //headerShown:false,
+                headerShown:false,
                 //headerStyle: { backgroundColor: colors.red },
                 tabBarIcon: ({focused}) => (
                     <Ionicons name="person-sharp" size={28} 
@@ -71,6 +66,7 @@ const Tabs = () => {
             />
         </Tab.Navigator>
         </NavigationContainer>
+        //</SafeAreaView>
     )
 }
 

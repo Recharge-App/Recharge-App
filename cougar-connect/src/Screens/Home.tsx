@@ -6,7 +6,6 @@ function Home({ navigation }: { navigation: any }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Header title='Home' />
-      <Text>Home Screen</Text>
     </View>
   );
 }

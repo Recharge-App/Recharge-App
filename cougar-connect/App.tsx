@@ -11,9 +11,7 @@ function App() {
 	//<SignIn />
 	//<SignUp />
 	//*/
-	<SafeAreaView style={{ flex: 1 }}>
 		<Tabs />
-	</SafeAreaView>
 	//*/
   );
 }
