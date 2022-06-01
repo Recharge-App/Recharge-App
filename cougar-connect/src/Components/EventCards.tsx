@@ -1,28 +1,24 @@
-import { useState } from 'react';
+import { useEffect } from 'react';
 import { View, Text, Button, Image, StyleSheet, Dimensions, TouchableOpacity, Modal, Alert, Pressable } from 'react-native';
 import { colors } from './Colors';
 import { ScreenWidth, ScreenHeight } from './Dimensions';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { useToast } from 'react-native-toast-notifications';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 
 function EventCards(props: any) {
 	
 	// Variables
-	//let eventName = "Spy Family watch party";
-	//let organizerName = "Mihir Sahu";
-	//let eventLocation = "Virtual: CougarCS Discord server";
 	let eventName = props.eventName;
 	let organizerName = props.organizerName;
 	let eventLocation = props.eventLocation;
 
-	// Event handlers
-	function attendPress(this: any) {
-		console.log("Message thing pressed");
-	}
+	let registerConfirmation = "You successfully registered for the event!";
+	let peoplePress = "You pressed the people button";
 
-	function peoplePress() {
-		console.log("People thing pressed");
-	}
+	const toast = useToast();
 
 	return (
 		<View style={styles.card}>
@@ -35,10 +31,10 @@ function EventCards(props: any) {
 				<Text style={styles.cardText}>{eventLocation}</Text>
 			</View>
 			<View style={styles.iconButtonView}>
-				<TouchableOpacity style={styles.iconButtons} onPress={attendPress}>
+				<TouchableOpacity style={styles.iconButtons} onPress={() => toast.show(registerConfirmation, {type: 'custom', placement: 'top', duration: 4000, offset: 30, animationType: 'slide-in'})}>
 					<Ionicons name='md-send' size={ScreenHeight * .035} color={colors.red}></Ionicons>
 				</TouchableOpacity>
-				<TouchableOpacity style={styles.iconButtons} onPress={peoplePress}>
+				<TouchableOpacity style={styles.iconButtons} onPress={() => toast.show(peoplePress, {type: 'custom', placement: 'top', duration: 4000, offset: 30, animationType: 'slide-in'})}>
 					<Ionicons name='md-people' size={ScreenHeight * .035} color={colors.red}></Ionicons>
 				</TouchableOpacity>
 			</View>

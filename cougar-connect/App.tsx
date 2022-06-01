@@ -2,6 +2,7 @@ import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import Tabs from './src/Navigation/Tabs';
 import { SafeAreaView } from 'react-native'
+import { ToastProvider } from 'react-native-toast-notifications';
 
 
 function App() {
@@ -10,9 +11,9 @@ function App() {
 	//<Onboarding />
 	//<SignIn />
 	//<SignUp />
-	//*/
+  	<ToastProvider>
 		<Tabs />
-	//*/
+	</ToastProvider>
   );
 }
 

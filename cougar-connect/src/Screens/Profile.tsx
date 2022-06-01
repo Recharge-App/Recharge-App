@@ -4,6 +4,7 @@ import { ScreenWidth, ScreenHeight } from '../Components/Dimensions';
 import { colors } from '../Components/Colors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import EventCards from '../Components/EventCards';
+import SignIn from './SignIn';
 
 function Profile({ navigation }: { navigation: any }) {
 	
@@ -22,20 +23,22 @@ function Profile({ navigation }: { navigation: any }) {
   	    	<Image style={styles.tinyLogo} source={require("../../assets/profile_pic.jpeg")} />
 			<Text style={styles.name}>{ first_name + " " + last_name }</Text>
 			<View style={styles.followView}>
-				<View style={{alignItems: 'center'}}>
+				<TouchableOpacity style={{alignItems: 'center'}} onPress={() => {navigation.navigate('SignIn')}}>
 					<Text style={styles.followText}>{follows}</Text>
 					<Text style={styles.followText}>Followers</Text>
-				</View>
-				<View style={{alignItems: 'center'}}>
+				</TouchableOpacity>
+				<TouchableOpacity style={{alignItems: 'center'}}>
 					<Text style={styles.followText}>{following}</Text>
 					<Text style={styles.followText}>Following</Text>
-				</View>
+				</TouchableOpacity>
 			</View>
 		</View>
 		<View style={styles.footer}>
 			<Text style={styles.recentEventText}>Recent Activity</Text>
-			<ScrollView style={{height: ScreenHeight * .40 * 5}}>
-				<EventCards></EventCards>
+			<ScrollView>
+				<EventCards eventName="Spy Family Watch Party" organizerName="Mihir Sahu" eventLocation="CougarCS Discord Server"></EventCards>
+				<EventCards eventName="Spy Family Watch Party" organizerName="Mihir Sahu" eventLocation="CougarCS Discord Server"></EventCards>
+				<EventCards eventName="Spy Family Watch Party" organizerName="Mihir Sahu" eventLocation="CougarCS Discord Server"></EventCards>
 			</ScrollView>
 		</View>
   	  </View>
