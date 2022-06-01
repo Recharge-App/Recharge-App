@@ -5,7 +5,8 @@ import Home from './Home';
 import Search from './Search';
 import Calendar from './Calendar';
 import Profile from './Profile';
-
+import OrganizationsTab from './OrganizationsTab';
+import StudentsTab from './StudentsTab';
 export {
 	Onboarding,
     SignIn,
@@ -14,4 +15,6 @@ export {
 	Search,
 	Calendar,
 	Profile,
+	OrganizationsTab,
+	StudentsTab,
 };

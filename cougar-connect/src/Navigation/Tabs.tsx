@@ -4,12 +4,14 @@ import { Ionicons } from "@expo/vector-icons";
 import { View, TouchableOpacity} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { Home, Search, Calendar,Profile } from '../Screens/index'
-import { SearchBar, TopTab } from '../Components';
+import TopTab from './TopTab';
+
 const Tab = createBottomTabNavigator();
 const Tabs = () => {
 
 
     return(
+    
         <NavigationContainer>            
 
         <Tab.Navigator
@@ -19,14 +21,13 @@ const Tabs = () => {
                     position: 'absolute',
                     elevation: 0,
                     backgroundColor: colors.white,
-                    borderRadius: 15,
                     height: 50,
                 }
                 
             }}
         >
             <Tab.Screen name="Home" component={Home} options={{
-                //headerShown:false,
+                headerShown:false,
                 tabBarIcon: ({focused}) => (
                     <View style={{alignItems:'center', justifyContent:'center'}}>
                     <Ionicons name="home-sharp" size={28} 
@@ -52,13 +53,14 @@ const Tabs = () => {
                 tabBarIcon: ({focused}) => (
                     <Ionicons name="calendar-sharp" size={28} 
                     style={{
-                        color: focused ? colors.red : colors.black
+                        color: focused ? colors.red : colors.black,
                     }}/>
                 ),
             }}
             />
             <Tab.Screen name="Profile" component={Profile} options={{
-                headerShown:false,
+                //headerShown:false,
+                //headerStyle: { backgroundColor: colors.red },
                 tabBarIcon: ({focused}) => (
                     <Ionicons name="person-sharp" size={28} 
                     style={{

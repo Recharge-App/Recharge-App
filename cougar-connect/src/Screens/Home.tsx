@@ -1,11 +1,11 @@
-import { View, Text, Button } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { View, Text } from 'react-native';
 import { Header } from '../Components';
+
 
 function Home({ navigation }: { navigation: any }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Header title='Home' />
       <Text>Home Screen</Text>
     </View>
   );

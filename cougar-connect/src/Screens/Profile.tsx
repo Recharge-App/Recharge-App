@@ -5,7 +5,6 @@ import { colors } from '../Components/Colors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import EventCards from '../Components/EventCards';
 
-
 function Profile({ navigation }: { navigation: any }) {
 	
 	// Variables

@@ -29,23 +29,27 @@ const Header: React.FunctionComponent<HeaderComponentProps> = (props) => {
 
 
 return (
+
   <SafeAreaProvider>
     <HeaderRNE
+      containerStyle={{
+        backgroundColor: colors.white,
+      }}
       rightComponent={
           <View style={styles.headerRight}>
             <TouchableOpacity
               style={{ marginLeft: 10 }}
             >
-                <Ionicons name="settings-sharp" size={28} 
+                <Ionicons name="add-sharp" size={28} 
                     style={{
-                        color: colors.red 
+                        color: colors.black 
                     }}
                 >
                 </Ionicons>
             </TouchableOpacity>
           </View>
       }
-      centerComponent={{ text: 'Header', style: styles.heading }}
+      centerComponent={{ text: props.title, style: styles.heading }}
     />
   </SafeAreaProvider>
 );
@@ -61,14 +65,14 @@ headerContainer: {
   paddingVertical: 15,
 },
 heading: {
-  color: 'white',
-  fontSize: 22,
+  color: colors.black,
+  fontSize: 20,
   fontWeight: 'bold',
 },
 headerRight: {
   display: 'flex',
   flexDirection: 'row',
-  marginTop: 5,
+  marginTop: 0,
 },
 subheaderText: {
   color: 'white',
