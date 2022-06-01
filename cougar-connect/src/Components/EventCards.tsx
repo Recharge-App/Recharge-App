@@ -1,19 +1,23 @@
-import { View, Text, Button, Image, StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
+import { useState } from 'react';
+import { View, Text, Button, Image, StyleSheet, Dimensions, TouchableOpacity, Modal, Alert, Pressable } from 'react-native';
 import { colors } from './Colors';
 import { ScreenWidth, ScreenHeight } from './Dimensions';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 
-function EventCards() {
+function EventCards(props: any) {
 	
 	// Variables
-	let eventName = "Spy Family watch party";
-	let organizerName = "Mihir Sahu";
-	let eventLocation = "Virtual: CougarCS Discord server";
+	//let eventName = "Spy Family watch party";
+	//let organizerName = "Mihir Sahu";
+	//let eventLocation = "Virtual: CougarCS Discord server";
+	let eventName = props.eventName;
+	let organizerName = props.organizerName;
+	let eventLocation = props.eventLocation;
 
 	// Event handlers
-	function attendPress() {
-		console.log("DM thing pressed");
+	function attendPress(this: any) {
+		console.log("Message thing pressed");
 	}
 
 	function peoplePress() {
