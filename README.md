@@ -1,3 +1,3 @@
-# UpCoog
+# CougarConnect
 
-This is UpCoog, a mobile app that helps build vibrant communities at the University of Houston.
+This is CougarConnect, a mobile app that helps build vibrant communities at the University of Houston.
