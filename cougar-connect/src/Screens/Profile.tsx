@@ -5,6 +5,7 @@ import { colors } from '../Components/Colors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import EventCards from '../Components/EventCards';
 import SignIn from './SignIn';
+import { useFonts } from 'expo-font';
 
 function Profile({ navigation }: { navigation: any }) {
 	
@@ -14,13 +15,15 @@ function Profile({ navigation }: { navigation: any }) {
 	let follows = 100;
 	let following = 50;
 
+	let [fontsLoaded] = useFonts({'lato-thin': require('../../assets/fonts/Lato-Thin.ttf'), 'lato-bold': require('../../assets/fonts/Lato-Bold.ttf'),});
+
 	return (
   	  <View style={styles.root}>
 	  	<View style={styles.header}>
 			<TouchableOpacity style={{alignSelf: 'flex-start', marginLeft: ScreenWidth * .05}}>
 				<Ionicons name='md-settings-outline' color={colors.white} size={ScreenHeight* .035}></Ionicons>
 			</TouchableOpacity>
-  	    	<Image style={styles.tinyLogo} source={require("../../assets/profile_pic.jpeg")} />
+  	    	<Image style={styles.tinyLogo} source={require("../../assets/images/profile_pic.jpeg")} />
 			<Text style={styles.name}>{ first_name + " " + last_name }</Text>
 			<View style={styles.followView}>
 				<TouchableOpacity style={{alignItems: 'center'}} onPress={() => {navigation.navigate('SignIn')}}>
@@ -70,6 +73,7 @@ const styles = StyleSheet.create({
 		fontWeight: 'bold',
 		color: colors.white,
 		margin: ScreenHeight * .03,
+		fontFamily: "lato-bold",
 	},
 	followView: {
 		flexDirection: 'row',
