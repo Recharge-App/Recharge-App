@@ -7,13 +7,34 @@ import { ToastProvider } from 'react-native-toast-notifications';
 // Import fonts here
 // https://docs.expo.dev/guides/using-custom-fonts/
 // https://www.npmjs.com/package/@expo-google-fonts/lato
-import { useFonts, Lato_400Regular } from '@expo-google-fonts/lato';
+import { 
+	useFonts, 
+	Lato_100Thin,
+	Lato_100Thin_Italic,
+	Lato_300Light,
+	Lato_300Light_Italic,
+	Lato_400Regular,
+	Lato_400Regular_Italic,
+	Lato_700Bold,
+	Lato_700Bold_Italic,
+	Lato_900Black,
+	Lato_900Black_Italic,
+} from '@expo-google-fonts/lato';
 
 
 function App() {
 
 	let [fontsLoaded] = useFonts({
-	  Lato_400Regular,
+		Lato_100Thin,
+		Lato_100Thin_Italic,
+		Lato_300Light,
+		Lato_300Light_Italic,
+		Lato_400Regular,
+		Lato_400Regular_Italic,
+		Lato_700Bold,
+		Lato_700Bold_Italic,
+		Lato_900Black,
+		Lato_900Black_Italic,
 	});
 
 	return (

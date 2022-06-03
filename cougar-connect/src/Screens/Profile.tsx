@@ -2,6 +2,7 @@ import { View, Text, Button, Image, StyleSheet, Dimensions, ScrollView, Touchabl
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { ScreenWidth, ScreenHeight } from '../Components/Dimensions';
 import { colors } from '../Components/Colors';
+import { fonts } from '../Components/Fonts';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import EventCards from '../Components/EventCards';
 import SignIn from './SignIn';
@@ -70,7 +71,7 @@ const styles = StyleSheet.create({
 		fontWeight: 'bold',
 		color: colors.white,
 		margin: ScreenHeight * .03,
-		fontFamily: 'Lato_400Regular'
+		fontFamily: fonts.Lato_700Bold,
 	},
 	followView: {
 		flexDirection: 'row',
@@ -80,6 +81,7 @@ const styles = StyleSheet.create({
 	followText: {
 		color: colors.white,
 		fontWeight: 'bold',
+		fontFamily: fonts.Lato_700Bold
 	},
 	footer: {
 		backgroundColor: colors.white,

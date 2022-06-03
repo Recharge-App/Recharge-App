@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { View, Text, Button, Image, StyleSheet, Dimensions, TouchableOpacity, Modal, Alert, Pressable } from 'react-native';
 import { colors } from './Colors';
+import { fonts } from './Fonts';
 import { ScreenWidth, ScreenHeight } from './Dimensions';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useToast } from 'react-native-toast-notifications';
@@ -58,6 +59,7 @@ const styles = StyleSheet.create({
 	},
 	cardText: {
 		color: colors.black,
+		fontFamily: fonts.Lato_400Regular,
 	},
 	iconButtonView: {
 		flexDirection: 'row',
