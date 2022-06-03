@@ -5,7 +5,6 @@ import { colors } from '../Components/Colors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import EventCards from '../Components/EventCards';
 import SignIn from './SignIn';
-import { useFonts } from 'expo-font';
 
 function Profile({ navigation }: { navigation: any }) {
 	
@@ -14,8 +13,6 @@ function Profile({ navigation }: { navigation: any }) {
 	let last_name = "Sahu";
 	let follows = 100;
 	let following = 50;
-
-	let [fontsLoaded] = useFonts({'lato-thin': require('../../assets/fonts/Lato-Thin.ttf'), 'lato-bold': require('../../assets/fonts/Lato-Bold.ttf'),});
 
 	return (
   	  <View style={styles.root}>
@@ -73,7 +70,7 @@ const styles = StyleSheet.create({
 		fontWeight: 'bold',
 		color: colors.white,
 		margin: ScreenHeight * .03,
-		fontFamily: "lato-bold",
+		fontFamily: 'Lato_400Regular'
 	},
 	followView: {
 		flexDirection: 'row',
