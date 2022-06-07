@@ -22,7 +22,7 @@ const Tabs = () => {
             }}
         >
             <Tab.Screen name="Home" component={Home} options={{
-                headerShown:false,
+                //headerShown:false,
                 tabBarIcon: ({focused}) => (
                     <View style={{alignItems:'center', justifyContent:'center'}}>
                     <Ionicons name="home-sharp" size={28} 

@@ -37,9 +37,7 @@ function Profile({ navigation }: { navigation: any }) {
 		<View style={styles.footer}>
 			<Text style={styles.recentEventText}>Recent Activity</Text>
 			<ScrollView>
-				<EventCards eventName="Spy Family Watch Party" organizerName="Mihir Sahu" eventLocation="CougarCS Discord Server"></EventCards>
-				<EventCards eventName="Spy Family Watch Party" organizerName="Mihir Sahu" eventLocation="CougarCS Discord Server"></EventCards>
-				<EventCards eventName="Spy Family Watch Party" organizerName="Mihir Sahu" eventLocation="CougarCS Discord Server"></EventCards>
+				<EventCards eventName="you know what it is" organizerName="Mihir Sahu" eventLocation="CougarCS Discord Server"></EventCards>
 			</ScrollView>
 		</View>
   	  </View>
