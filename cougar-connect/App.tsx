@@ -3,6 +3,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import Tabs from './src/Navigation/Tabs';
 import { SafeAreaView } from 'react-native'
 import { ToastProvider } from 'react-native-toast-notifications';
+import SignIn from './src/Screens/SignIn';
+import SignUp from './src/Screens/SignUp';
+import Onboarding from './src/Screens/Onboarding';
 
 // Import fonts here
 // https://docs.expo.dev/guides/using-custom-fonts/
@@ -39,12 +42,13 @@ function App() {
 
 	return (
 		// Change this to switch between the login screen and the home screen
-	  //<Onboarding />
-	  //<SignIn />
-	  //<SignUp />
+	
+		//<Onboarding />
+		//<SignIn />
+	  	//<SignUp />
 		<ToastProvider>
-	  	<Tabs />
-	  </ToastProvider>
+			<Tabs />
+		</ToastProvider>
 	);
 }
 

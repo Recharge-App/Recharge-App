@@ -2,6 +2,15 @@ import React from 'react'
 import { View, Text, Button, Alert, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
 import { colors } from '../Components/Colors';
 import { ScreenWidth, ScreenHeight } from '../Components/Dimensions';
+import * as yup from 'yup';
+import { Formik } from 'formik';
+
+
+const reviewSchema = yup.object({
+	username: yup.string().required(),
+	email: yup.string().email().required(),
+	password: yup.string().required(),
+});
 
 const SignUp = () => {
 
@@ -13,20 +22,29 @@ const SignUp = () => {
                 <Text style={styles.signup_text_small}>Create your account</Text>
 
                     <View style={styles.form_container}>
-                        <TextInput placeholder='Full Name' style={styles.name_email_input} autoCapitalize='none' />
-                        <TextInput placeholder='Email' style={styles.name_email_input} autoCapitalize='none' />
-                        <TextInput placeholder='Password' style={styles.password_input} autoCapitalize='none' />
 
+						<Formik
+							initialValues={{ username: '', email: '', password: ''}}
+							validationSchema={reviewSchema}
+							onSubmit={() => {Alert.alert('Created an account')}}
+						>
+							{({ handleChange, handleBlur, handleSubmit, values }) => (
+								<View>
+                        			<TextInput placeholder='Full Name' placeholderTextColor='#979797' style={styles.name_email_input} autoCapitalize='none' onChangeText={handleChange('username')} value={values.username} onBlur={handleBlur('username')} />
+                        			<TextInput placeholder='Email' placeholderTextColor='#979797' style={styles.name_email_input} autoCapitalize='none' onChangeText={handleChange('email')} value={values.email} onBlur={handleBlur('email')} />
+                        			<TextInput placeholder='Password' placeholderTextColor='#979797' style={styles.password_input} autoCapitalize='none' onChangeText={handleChange('password')} value={values.password} onBlur={handleBlur('password')} />
 
-
-                        <View style={styles.button}>
-                            <Button
-                                onPress={() => Alert.alert('Signed up')}
-                                title="Sign up"
-                                color= {colors.white}
-                                accessibilityLabel="Learn more about this purple button"
-                            />
-                        </View>
+                        			<View style={styles.button}>
+                        			    <Button
+                        			        onPress={() => handleSubmit()}
+                        			        title="Login"
+                        			        color= {colors.white}
+                        			        accessibilityLabel="Learn more about this purple button"
+                        			    />
+                        			</View>
+								</View>
+							)}
+						</Formik>
 
                         <View style={styles.no_account_container}>
                             <Text style={styles.no_account_text}>Already have an account? </Text>

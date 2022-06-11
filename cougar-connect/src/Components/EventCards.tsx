@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
 	},
 	cardText: {
 		color: colors.white,
-		fontFamily: fonts.Lato_400Regular,
+		fontFamily: fonts.Lato_700Bold,
 	},
 	iconButtonView: {
 		flexDirection: 'row',

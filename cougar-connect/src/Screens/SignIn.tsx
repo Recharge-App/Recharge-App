@@ -2,9 +2,17 @@ import React from 'react'
 import { View, Text, Button, Alert, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
 import { colors } from '../Components/Colors';
 import { ScreenWidth, ScreenHeight } from '../Components/Dimensions';
+import * as yup from 'yup';
+import { Formik } from 'formik';
+
+
+const reviewSchema = yup.object({
+	email: yup.string().email('Must be a valid UH email.').required('Email is required.'),
+	password: yup.string().min(5).required('Password is required'),
+});
 
 const SignIn = () => {
-
+	
     return (
         <View style={styles.root}>
         <Text style={styles.logo_text}>UpCoogs</Text>
@@ -13,21 +21,33 @@ const SignIn = () => {
                 <Text style={styles.signin_text_small}>Enter your UH email and password</Text>
 
                     <View style={styles.form_container}>
-                        <TextInput placeholder='Email' style={styles.email_input} autoCapitalize='none' />
-                        <TextInput placeholder='Password' style={styles.password_input} autoCapitalize='none' />
+						<Formik
+							initialValues={{ email: '', password: ''}}
+							validationSchema={reviewSchema}
+							onSubmit={() => {Alert.alert('Logged in')}}
+						>
+							{({ handleChange, handleBlur, handleSubmit, values, errors, touched }) => (
+								<View>
+									<TextInput placeholder='Email' placeholderTextColor='#979797' style={styles.email_input} autoCapitalize='none' onChangeText={handleChange('email')} value={values.email} onBlur={handleBlur('email')} />
+									{errors.email && touched.email && <TextInput secureTextEntry={false} style={{color: colors.red}}>{errors.email}</TextInput>}
+									<TextInput secureTextEntry={true} placeholder='Password' placeholderTextColor='#979797' style={styles.password_input} autoCapitalize='none' onChangeText={handleChange('password')} value={values.password} onBlur={handleBlur('password')} />
+									{errors.password && touched.password && <TextInput secureTextEntry={false} style={{color: colors.red}}>{errors.password}</TextInput>}
+
+                        			<View style={styles.button}>
+                        			    <Button
+                        			        onPress={() => handleSubmit()}
+                        			        title="Login"
+                        			        color= {colors.white}
+                        			        accessibilityLabel="Learn more about this purple button"
+                        			    />
+                        			</View>
+								</View>
+							)}
+						</Formik>
 
                         <TouchableOpacity>
                             <Text style={styles.forgot_password}>Forgot password?</Text>
                         </TouchableOpacity>
-
-                        <View style={styles.button}>
-                            <Button
-                                onPress={() => Alert.alert('Logged in')}
-                                title="Login"
-                                color= {colors.white}
-                                accessibilityLabel="Learn more about this purple button"
-                            />
-                        </View>
 
                         <View style={styles.no_account_container}>
                             <Text style={styles.no_account_text}>Don't have an account? </Text>
@@ -90,14 +110,13 @@ const styles = StyleSheet.create({
         color: colors.black,
         borderBottomColor: colors.red,
         borderBottomWidth: 1,
-        marginBottom: 50,
     },
     password_input: {
         fontSize: 18,
         color: colors.black,
         borderBottomColor: colors.red,
         borderBottomWidth: 1,
-
+		marginTop: ScreenHeight * .03,
     },
     forgot_password: {
         fontSize: 15,

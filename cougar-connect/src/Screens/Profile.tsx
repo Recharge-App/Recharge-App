@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
 	followText: {
 		color: colors.white,
 		fontWeight: 'bold',
-		fontFamily: fonts.Lato_700Bold
+		fontFamily: fonts.Lato_700Bold,
 	},
 	footer: {
 		backgroundColor: colors.white,
