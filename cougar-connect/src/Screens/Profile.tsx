@@ -1,4 +1,4 @@
-import { View, Text, Button, Image, StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
+import { View, Text, Button, Image, StyleSheet, Dimensions, TouchableOpacity, FlatList } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { ScreenWidth, ScreenHeight } from '../Components/Dimensions';
 import { colors } from '../Components/Colors';
@@ -14,6 +14,38 @@ function Profile({ navigation }: { navigation: any }) {
 	let last_name = "Sahu";
 	let follows = 100;
 	let following = 50;
+	const events = [
+		{
+			id: "1",
+			eventName: "You know what it is",
+			organizerName: "Mihir Sahu",
+			eventLocation: "CougarCS Discord Server",
+		},
+		{
+			id: "2",
+			eventName: "You know what it is",
+			organizerName: "Mihir Sahu",
+			eventLocation: "CougarCS Discord Server",
+		},
+		{
+			id: "3",
+			eventName: "You know what it is",
+			organizerName: "Mihir Sahu",
+			eventLocation: "CougarCS Discord Server",
+		},
+		{
+			id: "4",
+			eventName: "You know what it is",
+			organizerName: "Mihir Sahu",
+			eventLocation: "CougarCS Discord Server",
+		}
+	];
+
+	const renderEventCards = (eventName: string, organizerName: string, eventLocation: string) => {
+		return (
+			<EventCards eventName={eventName} organizerName={organizerName} eventLocation={eventLocation}></EventCards>
+		)
+	}
 
 	return (
   	  <View style={styles.root}>
@@ -36,7 +68,14 @@ function Profile({ navigation }: { navigation: any }) {
 		</View>
 		<View style={styles.footer}>
 			<Text style={styles.recentEventText}>Recent Activity</Text>
-			<EventCards eventName="you know what it is" organizerName="Mihir Sahu" eventLocation="CougarCS Discord Server"></EventCards>
+			<FlatList
+				data={events}
+				renderItem={({item}) => renderEventCards(item.eventName, item.organizerName, item.eventLocation)}
+				keyExtractor={(item) => item.id}
+				showsHorizontalScrollIndicator={false}
+				showsVerticalScrollIndicator={false}
+				ItemSeparatorComponent={() => <View style={styles.separatorComponent}></View>}
+			/>
 		</View>
   	  </View>
   	);
@@ -81,12 +120,16 @@ const styles = StyleSheet.create({
 	},
 	footer: {
 		backgroundColor: colors.white,
+		flex: 1,
 	},
 	recentEventText: {
 		marginTop: ScreenHeight * .02, 
 		fontWeight: 'bold', 
 		alignSelf: 'center', 
 		marginBottom: ScreenHeight * .02,
+	},
+	separatorComponent: {
+		height: ScreenHeight * .02,
 	},
 });
 
