@@ -7,9 +7,9 @@ import { Formik } from 'formik';
 
 
 const reviewSchema = yup.object({
-	username: yup.string().required(),
-	email: yup.string().email().required(),
-	password: yup.string().required(),
+	username: yup.string().required("Username is required."),
+	email: yup.string().email("Must be a valid UH email.").required("Email is required."),
+	password: yup.string().min(5, "Password must have at least 5 characters.").required("Password is required."),
 });
 
 const SignUp = () => {
@@ -28,11 +28,14 @@ const SignUp = () => {
 							validationSchema={reviewSchema}
 							onSubmit={() => {Alert.alert('Created an account')}}
 						>
-							{({ handleChange, handleBlur, handleSubmit, values }) => (
+							{({ handleChange, handleBlur, handleSubmit, values, errors, touched }) => (
 								<View>
                         			<TextInput placeholder='Full Name' placeholderTextColor='#979797' style={styles.name_email_input} autoCapitalize='none' onChangeText={handleChange('username')} value={values.username} onBlur={handleBlur('username')} />
+									{errors.username && touched.username && <TextInput secureTextEntry={false} style={{color: colors.red}}>{errors.username}</TextInput>}
                         			<TextInput placeholder='Email' placeholderTextColor='#979797' style={styles.name_email_input} autoCapitalize='none' onChangeText={handleChange('email')} value={values.email} onBlur={handleBlur('email')} />
+									{errors.email && touched.email && <TextInput secureTextEntry={false} style={{color: colors.red}}>{errors.email}</TextInput>}
                         			<TextInput placeholder='Password' placeholderTextColor='#979797' style={styles.password_input} autoCapitalize='none' onChangeText={handleChange('password')} value={values.password} onBlur={handleBlur('password')} />
+									{errors.password && touched.password && <TextInput secureTextEntry={false} style={{color: colors.red}}>{errors.password}</TextInput>}
 
                         			<View style={styles.button}>
                         			    <Button
@@ -100,21 +103,21 @@ const styles = StyleSheet.create({
         fontSize: 14,
     },
     form_container: {
-        marginTop: 70,
+        marginTop: ScreenHeight * .025,
     },
     name_email_input: {
         fontSize: 18,
         color: colors.black,
         borderBottomColor: colors.red,
         borderBottomWidth: 1,
-        marginBottom: 50,
+		marginTop: ScreenHeight * .03,
     },
     password_input: {
         fontSize: 18,
         color: colors.black,
         borderBottomColor: colors.red,
         borderBottomWidth: 1,
-
+		marginTop: ScreenHeight * .03,
     },
     button: {
         position: 'relative',

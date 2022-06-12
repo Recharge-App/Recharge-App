@@ -8,7 +8,7 @@ import { Formik } from 'formik';
 
 const reviewSchema = yup.object({
 	email: yup.string().email('Must be a valid UH email.').required('Email is required.'),
-	password: yup.string().min(5).required('Password is required'),
+	password: yup.string().min(5, "Password must have at least 5 characters.").required('Password is required.'),
 });
 
 const SignIn = () => {
@@ -33,6 +33,10 @@ const SignIn = () => {
 									<TextInput secureTextEntry={true} placeholder='Password' placeholderTextColor='#979797' style={styles.password_input} autoCapitalize='none' onChangeText={handleChange('password')} value={values.password} onBlur={handleBlur('password')} />
 									{errors.password && touched.password && <TextInput secureTextEntry={false} style={{color: colors.red}}>{errors.password}</TextInput>}
 
+                        			<TouchableOpacity>
+                        			    <Text style={styles.forgot_password}>Forgot password?</Text>
+                        			</TouchableOpacity>
+
                         			<View style={styles.button}>
                         			    <Button
                         			        onPress={() => handleSubmit()}
@@ -44,10 +48,6 @@ const SignIn = () => {
 								</View>
 							)}
 						</Formik>
-
-                        <TouchableOpacity>
-                            <Text style={styles.forgot_password}>Forgot password?</Text>
-                        </TouchableOpacity>
 
                         <View style={styles.no_account_container}>
                             <Text style={styles.no_account_text}>Don't have an account? </Text>

@@ -1,4 +1,4 @@
-import { View, Text, Button, Image, StyleSheet, Dimensions, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, Button, Image, StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { ScreenWidth, ScreenHeight } from '../Components/Dimensions';
 import { colors } from '../Components/Colors';
@@ -36,9 +36,7 @@ function Profile({ navigation }: { navigation: any }) {
 		</View>
 		<View style={styles.footer}>
 			<Text style={styles.recentEventText}>Recent Activity</Text>
-			<ScrollView>
-				<EventCards eventName="you know what it is" organizerName="Mihir Sahu" eventLocation="CougarCS Discord Server"></EventCards>
-			</ScrollView>
+			<EventCards eventName="you know what it is" organizerName="Mihir Sahu" eventLocation="CougarCS Discord Server"></EventCards>
 		</View>
   	  </View>
   	);
