@@ -52,6 +52,7 @@ function Home({ navigation }: { navigation: any }) {
 				showsVerticalScrollIndicator={false}
 				ItemSeparatorComponent={() => <View style={styles.separatorComponent}></View>}
 			/>
+			<EventModal visible={true}></EventModal>
 		</View>
 	);
 }

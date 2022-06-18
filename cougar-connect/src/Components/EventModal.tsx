@@ -1,31 +1,53 @@
 import { useState } from "react";
-import { Button, Text, View } from "react-native";
+import { Button, Text, View, StyleSheet } from "react-native";
 import Modal from "react-native-modal";
+import { ScreenWidth, ScreenHeight } from '../Components/Dimensions';
+import { colors } from '../Components/Colors';
+import { fonts } from '../Components/Fonts';
 
+
+type Props = {
+	visible: boolean,
+	jsxElement?: React.ReactNode,
+}
 
 const defaultElement = () => {
 	return(
 		<View style={{ flex: 1 }}>
-			<Text>I am the modal content!</Text>
+			<Text style={styles.modalText}>I am the modal content!</Text>
 		</View>
 	)
 }
 
-function EventModal(props?: any) {
+const EventModal: React.FC<Props> = ({ visible, jsxElement }) => {
 
-	const [isModalVisible, setModalVisible] = useState(false);
+	const [isModalVisible, setModalVisible] = useState(visible);
 
 	const toggleModal = () => {
     	setModalVisible(!isModalVisible);
   	};
 
 	return (
-		<Modal isVisible={isModalVisible} onBackdropPress={() => setModalVisible(false)}>
+		<Modal style={styles.modalCard} isVisible={isModalVisible} onBackdropPress={() => setModalVisible(false)} customBackdrop={<View style={{ flex: 1, backgroundColor: colors.white}} />} backdropColor={colors.white}>
 			<View style={{ flex: 1 }}>
-				{props ? props.children : defaultElement}
+				{jsxElement ? <Text>{jsxElement}</Text> : defaultElement()}
 			</View>
 		</Modal>
 	);
 }
+
+const styles = StyleSheet.create({
+	modalCard: {
+		marginHorizontal: ScreenWidth * .05,
+		marginVertical: ScreenHeight * .05,
+		width: ScreenWidth,
+		borderWidth: 3,
+		borderColor: 'red',
+	},
+	modalText: {
+		fontFamily: fonts.Lato_400Regular,
+	},
+});
+
 
 export default EventModal;
