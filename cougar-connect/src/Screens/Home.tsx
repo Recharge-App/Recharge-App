@@ -2,6 +2,7 @@ import { View, Text, StyleSheet, FlatList } from 'react-native';
 import { Header } from '../Components';
 import EventCards from '../Components/EventCards';
 import { ScreenWidth, ScreenHeight } from '../Components/Dimensions';
+import EventModal from '../Components/EventModal';
 
 
 function Home({ navigation }: { navigation: any }) {
@@ -33,6 +34,7 @@ function Home({ navigation }: { navigation: any }) {
 			eventLocation: "CougarCS Discord Server",
 		}
 	];
+
 
 	const renderEventCards = (eventName: string, organizerName: string, eventLocation: string) => {
 		return (

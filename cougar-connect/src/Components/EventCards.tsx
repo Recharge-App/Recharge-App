@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { View, Text, Button, Image, StyleSheet, Dimensions, TouchableOpacity, Modal, Alert, Pressable } from 'react-native';
+import { View, Text, Button, Image, StyleSheet, Dimensions, TouchableOpacity, Alert, Pressable } from 'react-native';
 import { colors } from './Colors';
 import { fonts } from './Fonts';
 import { ScreenWidth, ScreenHeight } from './Dimensions';
@@ -7,6 +7,9 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useToast } from 'react-native-toast-notifications';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Modal from "react-native-modal";
+import { useState } from 'react';
+import EventModal from './EventModal';
 
 
 function EventCards(props: any) {
@@ -38,7 +41,7 @@ function EventCards(props: any) {
 						</View>
 					</View>
 					<View style={longStyles.iconButtonView}>
-						<TouchableOpacity style={longStyles.iconButtons} onPress={() => toast.show(infoPress, {type: 'custom', placement: 'top', duration: 4000, offset: 30, animationType: 'slide-in'})}>
+						<TouchableOpacity style={longStyles.iconButtons} onPress={() => toast.show(registerConfirmation, {type: 'custom', placement: 'top', duration: 4000, offset: 30, animationType: 'slide-in'})}>
 							<Ionicons name='md-information-circle' size={ScreenHeight * .035} color={colors.white}></Ionicons>
 						</TouchableOpacity>
 						<TouchableOpacity style={longStyles.iconButtons} onPress={() => toast.show(registerConfirmation, {type: 'custom', placement: 'top', duration: 4000, offset: 30, animationType: 'slide-in'})}>
