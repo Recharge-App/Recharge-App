@@ -43,7 +43,7 @@ function Profile({ navigation }: { navigation: any }) {
 
 	const renderEventCards = (eventName: string, organizerName: string, eventLocation: string) => {
 		return (
-			<EventCards eventName={eventName} organizerName={organizerName} eventLocation={eventLocation}></EventCards>
+			<EventCards eventName={eventName} organizerName={organizerName} eventLocation={eventLocation} size="long"></EventCards>
 		)
 	}
 

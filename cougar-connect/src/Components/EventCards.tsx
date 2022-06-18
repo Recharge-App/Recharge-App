@@ -15,6 +15,7 @@ function EventCards(props: any) {
 	let eventName = props.eventName;
 	let organizerName = props.organizerName;
 	let eventLocation = props.eventLocation;
+	let size = props.size;
 
 	let registerConfirmation = "You successfully registered for the event!";
 	let peoplePress = "You pressed the people button";
@@ -22,34 +23,61 @@ function EventCards(props: any) {
 
 	const toast = useToast();
 
-	return (
-		<View style={styles.card}>
-			<View style={{flexDirection: 'row', width: ScreenWidth * .9, justifyContent: 'space-around'}}>
-				<View style={{justifyContent: 'center', alignItems: 'center'}}>
-					<Image style={{width: ScreenWidth * .25, height: ScreenHeight * .15, borderRadius: ScreenWidth * .15}} source={require('../../assets/images/profile_pic.jpeg')}></Image>
+	switch(size) {
+		case "long": {
+			return (
+				<View style={longStyles.card}>
+					<View style={{flexDirection: 'row', width: ScreenWidth * .9, justifyContent: 'space-around'}}>
+						<View style={{justifyContent: 'center', alignItems: 'center'}}>
+							<Image style={{width: ScreenWidth * .25, height: ScreenHeight * .15, borderRadius: ScreenWidth * .15}} source={require('../../assets/images/profile_pic.jpeg')}></Image>
+						</View>
+						<View style={{alignItems: 'center', justifyContent: 'space-around'}}>
+							<Text style={longStyles.cardText}>{eventName}</Text>
+							<Text style={longStyles.cardText}>{eventLocation}</Text>
+							<Text style={longStyles.cardText}>{organizerName}</Text>
+						</View>
+					</View>
+					<View style={longStyles.iconButtonView}>
+						<TouchableOpacity style={longStyles.iconButtons} onPress={() => toast.show(infoPress, {type: 'custom', placement: 'top', duration: 4000, offset: 30, animationType: 'slide-in'})}>
+							<Ionicons name='md-information-circle' size={ScreenHeight * .035} color={colors.white}></Ionicons>
+						</TouchableOpacity>
+						<TouchableOpacity style={longStyles.iconButtons} onPress={() => toast.show(registerConfirmation, {type: 'custom', placement: 'top', duration: 4000, offset: 30, animationType: 'slide-in'})}>
+							<Ionicons name='md-send' size={ScreenHeight * .035} color={colors.white}></Ionicons>
+						</TouchableOpacity>
+						<TouchableOpacity style={longStyles.iconButtons} onPress={() => toast.show(peoplePress, {type: 'custom', placement: 'top', duration: 4000, offset: 30, animationType: 'slide-in'})}>
+							<Ionicons name='md-people' size={ScreenHeight * .035} color={colors.white}></Ionicons>
+						</TouchableOpacity>
+					</View>
 				</View>
-				<View style={{alignItems: 'center', justifyContent: 'space-around'}}>
-					<Text style={styles.cardText}>{eventName}</Text>
-					<Text style={styles.cardText}>{eventLocation}</Text>
-					<Text style={styles.cardText}>{organizerName}</Text>
+			);
+			break;
+		}
+		case "short": {
+			return (
+				<View style={shortStyles.card}>
+					<View style={{flexDirection: 'row', width: ScreenWidth * .45, height: ScreenHeight * .15, justifyContent: 'space-around'}}>
+						<View style={{alignItems: 'center', justifyContent: 'space-around'}}>
+							<Text style={shortStyles.cardText}>{eventName}</Text>
+							<Text style={shortStyles.cardText}>{eventLocation}</Text>
+							<Text style={shortStyles.cardText}>{organizerName}</Text>
+						</View>
+					</View>
+					<View style={shortStyles.iconButtonView}>
+						<TouchableOpacity style={shortStyles.iconButtons} onPress={() => toast.show(registerConfirmation, {type: 'custom', placement: 'top', duration: 4000, offset: 30, animationType: 'slide-in'})}>
+							<Ionicons name='md-send' size={ScreenHeight * .035} color={colors.white}></Ionicons>
+						</TouchableOpacity>
+						<TouchableOpacity style={shortStyles.iconButtons} onPress={() => toast.show(peoplePress, {type: 'custom', placement: 'top', duration: 4000, offset: 30, animationType: 'slide-in'})}>
+							<Ionicons name='md-people' size={ScreenHeight * .035} color={colors.white}></Ionicons>
+						</TouchableOpacity>
+					</View>
 				</View>
-			</View>
-			<View style={styles.iconButtonView}>
-				<TouchableOpacity style={styles.iconButtons} onPress={() => toast.show(infoPress, {type: 'custom', placement: 'top', duration: 4000, offset: 30, animationType: 'slide-in'})}>
-					<Ionicons name='md-information-circle' size={ScreenHeight * .035} color={colors.white}></Ionicons>
-				</TouchableOpacity>
-				<TouchableOpacity style={styles.iconButtons} onPress={() => toast.show(registerConfirmation, {type: 'custom', placement: 'top', duration: 4000, offset: 30, animationType: 'slide-in'})}>
-					<Ionicons name='md-send' size={ScreenHeight * .035} color={colors.white}></Ionicons>
-				</TouchableOpacity>
-				<TouchableOpacity style={styles.iconButtons} onPress={() => toast.show(peoplePress, {type: 'custom', placement: 'top', duration: 4000, offset: 30, animationType: 'slide-in'})}>
-					<Ionicons name='md-people' size={ScreenHeight * .035} color={colors.white}></Ionicons>
-				</TouchableOpacity>
-			</View>
-		</View>
-	);
+			);
+			break;
+		}
+	}
 }
 
-const styles = StyleSheet.create({
+const longStyles = StyleSheet.create({
 	card: {
 		backgroundColor: colors.red,
 		width: ScreenWidth * .9,
@@ -64,6 +92,34 @@ const styles = StyleSheet.create({
 	iconButtonView: {
 		flexDirection: 'row',
 		justifyContent: 'space-around',
+	},
+	iconButtons: {
+		width: ScreenWidth * .10,
+		height: ScreenHeight * .05,
+		borderRadius: ScreenWidth * .02,
+		justifyContent: 'center',
+		alignItems: 'center',
+		backgroundColor: colors.red,
+	},
+});
+
+const shortStyles = StyleSheet.create({
+	card: {
+		backgroundColor: colors.red,
+		width: ScreenWidth * .5,
+		height: ScreenHeight * .30,
+		borderRadius: ScreenWidth * .06,
+		justifyContent: 'space-around',
+		alignItems: 'center',
+	},
+	cardText: {
+		color: colors.white,
+		fontFamily: fonts.Lato_700Bold,
+	},
+	iconButtonView: {
+		flexDirection: 'row',
+		justifyContent: 'space-around',
+		width: ScreenWidth * .45,
 	},
 	iconButtons: {
 		width: ScreenWidth * .10,
