@@ -4,6 +4,7 @@ import Modal from "react-native-modal";
 import { ScreenWidth, ScreenHeight } from '../Components/Dimensions';
 import { colors } from '../Components/Colors';
 import { fonts } from '../Components/Fonts';
+import ExitButton from '../Components/ExitButton';
 
 
 type Props = {
@@ -29,7 +30,8 @@ const EventModal: React.FC<Props> = ({ visible, jsxElement }) => {
 
 	return (
 		<Modal style={styles.modalCard} isVisible={isModalVisible} onBackdropPress={() => setModalVisible(false)} customBackdrop={<View style={{ flex: 1, backgroundColor: colors.white}} />} backdropColor={colors.white}>
-			<View style={{ flex: 1 }}>
+			<View style={styles.modalView}>
+				<ExitButton handleExit={setModalVisible}></ExitButton>
 				{jsxElement ? <Text>{jsxElement}</Text> : defaultElement()}
 			</View>
 		</Modal>
@@ -38,14 +40,22 @@ const EventModal: React.FC<Props> = ({ visible, jsxElement }) => {
 
 const styles = StyleSheet.create({
 	modalCard: {
-		marginHorizontal: ScreenWidth * .05,
-		marginVertical: ScreenHeight * .05,
+		margin: 0,
+		height: ScreenHeight,
 		width: ScreenWidth,
+		alignItems: 'center',
+	},
+	modalView: {
+		height: ScreenHeight * .85,
+		width: ScreenWidth * .85,
 		borderWidth: 3,
 		borderColor: 'red',
+		borderRadius: ScreenWidth * .06,
+		alignItems: 'center',
 	},
 	modalText: {
 		fontFamily: fonts.Lato_400Regular,
+		textAlign: 'center',
 	},
 });
 
