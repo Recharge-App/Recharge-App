@@ -2,7 +2,9 @@ import { View, Text, StyleSheet, FlatList } from 'react-native';
 import { Header } from '../Components';
 import EventCards from '../Components/EventCards';
 import { ScreenWidth, ScreenHeight } from '../Components/Dimensions';
-import EventModal from '../Components/EventModal';
+import { styleProp, EventModal } from '../Components/EventModal';
+import { colors } from '../Components/Colors';
+import { fonts } from '../Components/Fonts';
 
 
 function Home({ navigation }: { navigation: any }) {
@@ -38,7 +40,7 @@ function Home({ navigation }: { navigation: any }) {
 
 	const renderEventCards = (eventName: string, organizerName: string, eventLocation: string) => {
 		return (
-			<EventCards eventName={eventName} organizerName={organizerName} eventLocation={eventLocation} size="short"></EventCards>
+			<EventCards eventName={eventName} organizerName={organizerName} eventLocation={eventLocation} size="long"></EventCards>
 		)
 	}
 
@@ -52,7 +54,21 @@ function Home({ navigation }: { navigation: any }) {
 				showsVerticalScrollIndicator={false}
 				ItemSeparatorComponent={() => <View style={styles.separatorComponent}></View>}
 			/>
-			<EventModal visible={true}></EventModal>
+			<EventModal 
+			visible={false} 
+			eventName={
+				<View><Text style={styleProp.title}>Spy x Family</Text></View>
+			}
+			eventLocation={
+				<View><Text style={styleProp.eventDetails}>CougarCS Discord Server</Text></View>
+			}
+			eventDate={
+				<View><Text style={styleProp.eventDetails}>Saturday 25, 2022</Text></View>
+			}
+			eventOrganizer={
+				<View><Text style={styleProp.eventDetails}>Mihir Sahu</Text></View>
+			}
+			></EventModal>
 		</View>
 	);
 }
