@@ -14,6 +14,7 @@ type Props = {
 	eventLocation: React.ReactNode,
 	eventDate: React.ReactNode,
 	eventOrganizer: React.ReactNode,
+	eventAbout: React.ReactNode,
 }
 
 // This gets exported and should be used to style the eventName, eventLocation, eventDate, and eventOrganizer props
@@ -29,10 +30,15 @@ export const styleProp = StyleSheet.create({
 		color: colors.red,
 		fontSize: 18,
 	},
+	eventAbout: {
+		fontFamily: fonts.Lato_400Regular,
+		color: colors.red,
+		fontSize: 18,
+	},
 });
 
 
-export const EventModal: React.FC<Props> = ({ visible, eventName, eventLocation, eventDate, eventOrganizer }) => {
+export const EventModal: React.FC<Props> = ({ visible, eventName, eventLocation, eventDate, eventOrganizer, eventAbout }) => {
 
 	const [isModalVisible, setModalVisible] = useState(visible);
 
@@ -50,18 +56,22 @@ export const EventModal: React.FC<Props> = ({ visible, eventName, eventLocation,
 					<View>
 						<Text>{eventName}</Text>
 					</View>
-					<View style={{flexDirection: 'row'}}>
+					<View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
 						<Ionicons name='md-compass' size={ScreenHeight * .035} color={colors.red}></Ionicons>
-						<Text>{eventLocation}</Text>
+						<View>{eventLocation}</View>
 					</View>
-					<View style={{flexDirection: 'row'}}>
+					<View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
 						<Ionicons name='md-calendar' size={ScreenHeight * .035} color={colors.red}></Ionicons>
-						<Text>{eventDate}</Text>
+						<View>{eventDate}</View>
 					</View>
-					<View style={{flexDirection: 'row'}}>
+					<View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
 						<Ionicons name='md-person' size={ScreenHeight * .035} color={colors.red}></Ionicons>
-						<Text>{eventOrganizer}</Text>
+						<View>{eventOrganizer}</View>
 					</View>
+				</View>
+				<View style={styles.eventAbout}>
+					<Text style={{fontFamily: fonts.Lato_700Bold, fontSize: 18, color: colors.red}}>About</Text>
+					<View>{eventAbout}</View>
 				</View>
 			</View>
 		</Modal>
@@ -92,10 +102,13 @@ const styles = StyleSheet.create({
 	},
 	eventDetailsView: {
 		height: ScreenHeight * .30,
-		width: ScreenWidth * .60,
+		width: ScreenWidth * .80,
 		flexDirection: 'column',
 		alignItems: 'center',
 		justifyContent: 'space-around',
+		marginTop: ScreenHeight * .02,
+	},
+	eventAbout: {
 		marginTop: ScreenHeight * .05,
 	},
 });

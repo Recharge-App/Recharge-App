@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, Button, Alert, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
+import { View, Text, Button, Alert, StyleSheet, TextInput, TouchableOpacity, KeyboardAvoidingView, Platform } from 'react-native';
 import { colors } from '../Components/Colors';
 import { ScreenWidth, ScreenHeight } from '../Components/Dimensions';
 import * as yup from 'yup';
@@ -14,53 +14,53 @@ const reviewSchema = yup.object({
 const SignIn = () => {
 	
     return (
-        <View style={styles.root}>
-        <Text style={styles.logo_text}>UpCoogs</Text>
-            <View style={styles.signin}>
-                <Text style={styles.signin_text}>Sign in</Text>
-                <Text style={styles.signin_text_small}>Enter your UH email and password</Text>
+        <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={styles.root}>
+        		<Text style={styles.logo_text}>UpCoogs</Text>
+            	<View style={styles.signin}>
+            	    <Text style={styles.signin_text}>Sign in</Text>
+            	    <Text style={styles.signin_text_small}>Enter your UH email and password</Text>
 
-                    <View style={styles.form_container}>
-						<Formik
-							initialValues={{ email: '', password: ''}}
-							validationSchema={reviewSchema}
-							onSubmit={() => {Alert.alert('Logged in')}}
-						>
-							{({ handleChange, handleBlur, handleSubmit, values, errors, touched }) => (
-								<View>
-									<TextInput placeholder='Email' placeholderTextColor='#979797' style={styles.email_input} autoCapitalize='none' onChangeText={handleChange('email')} value={values.email} onBlur={handleBlur('email')} />
-									{errors.email && touched.email && <TextInput secureTextEntry={false} style={{color: colors.red}}>{errors.email}</TextInput>}
-									<TextInput secureTextEntry={true} placeholder='Password' placeholderTextColor='#979797' style={styles.password_input} autoCapitalize='none' onChangeText={handleChange('password')} value={values.password} onBlur={handleBlur('password')} />
-									{errors.password && touched.password && <TextInput secureTextEntry={false} style={{color: colors.red}}>{errors.password}</TextInput>}
+            	        <View style={styles.form_container}>
+							<Formik
+								initialValues={{ email: '', password: ''}}
+								validationSchema={reviewSchema}
+								onSubmit={() => {Alert.alert('Logged in')}}
+							>
+								{({ handleChange, handleBlur, handleSubmit, values, errors, touched }) => (
+									<View>
+										<TextInput placeholder='Email' placeholderTextColor='#979797' style={styles.email_input} autoCapitalize='none' onChangeText={handleChange('email')} value={values.email} onBlur={handleBlur('email')} />
+										{errors.email && touched.email && <Text style={{color: colors.red}}>{errors.email}</Text>}
+										<TextInput secureTextEntry={true} placeholder='Password' placeholderTextColor='#979797' style={styles.password_input} autoCapitalize='none' onChangeText={handleChange('password')} value={values.password} onBlur={handleBlur('password')} />
+										{errors.password && touched.password && <Text style={{color: colors.red}}>{errors.password}</Text>}
 
-                        			<TouchableOpacity>
-                        			    <Text style={styles.forgot_password}>Forgot password?</Text>
-                        			</TouchableOpacity>
+            	            			<TouchableOpacity>
+            	            			    <Text style={styles.forgot_password}>Forgot password?</Text>
+            	            			</TouchableOpacity>
 
-                        			<View style={styles.button}>
-                        			    <Button
-                        			        onPress={() => handleSubmit()}
-                        			        title="Login"
-                        			        color= {colors.white}
-                        			        accessibilityLabel="Learn more about this purple button"
-                        			    />
-                        			</View>
-								</View>
-							)}
-						</Formik>
+            	            			<View style={styles.button}>
+            	            			    <Button
+            	            			        onPress={() => handleSubmit()}
+            	            			        title="Login"
+            	            			        color= {colors.white}
+            	            			        accessibilityLabel="Learn more about this purple button"
+            	            			    />
+            	            			</View>
+									</View>
+								)}
+							</Formik>
 
-                        <View style={styles.no_account_container}>
-                            <Text style={styles.no_account_text}>Don't have an account? </Text>
+            	            <View style={styles.no_account_container}>
+            	                <Text style={styles.no_account_text}>Don't have an account? </Text>
 
-                            <TouchableOpacity>
-                                <Text style={styles.signup_input}>Sign Up</Text>
-                            </TouchableOpacity>
-                        </View>
+            	                <TouchableOpacity>
+            	                    <Text style={styles.signup_input}>Sign Up</Text>
+            	                </TouchableOpacity>
+            	            </View>
 
-                    </View>
-                
-            </View>
-        </View>
+            	        </View>
+            	    
+            	</View>
+        </KeyboardAvoidingView>
   )
 }
 const styles = StyleSheet.create({
@@ -69,6 +69,7 @@ const styles = StyleSheet.create({
         width: ScreenWidth,
         height: ScreenHeight,
         backgroundColor: colors.red,
+		flex: 1,
     },
     logo: {
         width: 100,
@@ -80,17 +81,17 @@ const styles = StyleSheet.create({
         color: colors.white,
         fontSize: 35,
         fontWeight: 'bold',
-        top: ScreenHeight / 5
+        top: ScreenHeight * .2
     },
     signin: {
         position: 'absolute',
         width: ScreenWidth * 1.03,
         height: ScreenHeight * 0.66,
-        borderTopLeftRadius: 100,
-        borderTopRightRadius: 100,
+        borderTopLeftRadius: ScreenWidth * .2,
+        borderTopRightRadius: ScreenWidth * .2,
         backgroundColor: colors.white,
         bottom: 0,
-        padding: 50,
+        padding: ScreenWidth * .15,
     },
     signin_text: {
         color: colors.red,

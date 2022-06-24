@@ -8,7 +8,7 @@ const Tab = createMaterialTopTabNavigator();
 
 function TopTab() {
   return (
-      <SafeAreaView style={{flex:1, backgroundColor: colors.white}}>
+      //<SafeAreaView style={{flex:1, backgroundColor: colors.white}}>
       <Tab.Navigator screenOptions={{
         tabBarActiveTintColor: colors.red,
         tabBarIndicatorStyle: { backgroundColor: colors.red},
@@ -17,7 +17,7 @@ function TopTab() {
         <Tab.Screen name="Organizations" component={OrganizationsTab} />
         <Tab.Screen name="Students" component={StudentsTab} />
       </Tab.Navigator>
-      </SafeAreaView>
+      //</SafeAreaView>
 
   );
 }

@@ -31,11 +31,11 @@ const SignUp = () => {
 							{({ handleChange, handleBlur, handleSubmit, values, errors, touched }) => (
 								<View>
                         			<TextInput placeholder='Full Name' placeholderTextColor='#979797' style={styles.name_email_input} autoCapitalize='none' onChangeText={handleChange('username')} value={values.username} onBlur={handleBlur('username')} />
-									{errors.username && touched.username && <TextInput secureTextEntry={false} style={{color: colors.red}}>{errors.username}</TextInput>}
+									{errors.username && touched.username && <Text style={{color: colors.red}}>{errors.username}</Text>}
                         			<TextInput placeholder='Email' placeholderTextColor='#979797' style={styles.name_email_input} autoCapitalize='none' onChangeText={handleChange('email')} value={values.email} onBlur={handleBlur('email')} />
-									{errors.email && touched.email && <TextInput secureTextEntry={false} style={{color: colors.red}}>{errors.email}</TextInput>}
+									{errors.email && touched.email && <Text style={{color: colors.red}}>{errors.email}</Text>}
                         			<TextInput placeholder='Password' placeholderTextColor='#979797' style={styles.password_input} autoCapitalize='none' onChangeText={handleChange('password')} value={values.password} onBlur={handleBlur('password')} />
-									{errors.password && touched.password && <TextInput secureTextEntry={false} style={{color: colors.red}}>{errors.password}</TextInput>}
+									{errors.password && touched.password && <Text style={{color: colors.red}}>{errors.password}</Text>}
 
                         			<View style={styles.button}>
                         			    <Button
