@@ -6,6 +6,7 @@ import { ToastProvider } from 'react-native-toast-notifications';
 import SignIn from './src/Screens/SignIn';
 import SignUp from './src/Screens/SignUp';
 import Onboarding from './src/Screens/Onboarding';
+import Tinder from './src/Screens/Tinder';
 
 // Import fonts here
 // https://docs.expo.dev/guides/using-custom-fonts/
@@ -49,6 +50,7 @@ function App() {
 		<ToastProvider>
 			<Tabs />
 		</ToastProvider>
+		//<Tinder/>
 	);
 }
 

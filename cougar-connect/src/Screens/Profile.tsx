@@ -1,4 +1,5 @@
-import { View, Text, Button, Image, StyleSheet, Dimensions, TouchableOpacity, FlatList } from 'react-native';
+import { View, Text, Button, Image, StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
+import { FlatList } from '@gemcook/react-native-animated-scroll-view';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { ScreenWidth, ScreenHeight } from '../Components/Dimensions';
 import { colors } from '../Components/Colors';
@@ -49,34 +50,39 @@ function Profile({ navigation }: { navigation: any }) {
 
 	return (
   	  <View style={styles.root}>
-	  	<View style={styles.header}>
-			<TouchableOpacity style={{alignSelf: 'flex-start', marginLeft: ScreenWidth * .05}}>
-				<Ionicons name='md-settings-outline' color={colors.white} size={ScreenHeight* .035}></Ionicons>
-			</TouchableOpacity>
-  	    	<Image style={styles.tinyLogo} source={require("../../assets/images/profile_pic.jpeg")} />
-			<Text style={styles.name}>{ first_name + " " + last_name }</Text>
-			<View style={styles.followView}>
-				<TouchableOpacity style={{alignItems: 'center'}} onPress={() => {navigation.navigate('SignIn')}}>
-					<Text style={styles.followText}>{follows}</Text>
-					<Text style={styles.followText}>Followers</Text>
-				</TouchableOpacity>
-				<TouchableOpacity style={{alignItems: 'center'}}>
-					<Text style={styles.followText}>{following}</Text>
-					<Text style={styles.followText}>Following</Text>
-				</TouchableOpacity>
-			</View>
-		</View>
-		<View style={styles.footer}>
-			<Text style={styles.recentEventText}>Recent Activity</Text>
 			<FlatList
+				style={styles.footer}
 				data={events}
 				renderItem={({item}) => renderEventCards(item.eventName, item.organizerName, item.eventLocation)}
 				keyExtractor={(item) => item.id}
 				showsHorizontalScrollIndicator={false}
 				showsVerticalScrollIndicator={false}
 				ItemSeparatorComponent={() => <View style={styles.separatorComponent}></View>}
+				maxHeaderHeight={ScreenHeight * .49}
+				minHeaderHeight={0}
+				AnimationHeaderComponent={
+					<View>
+	  					<View style={styles.header}>
+							<TouchableOpacity style={{alignSelf: 'flex-start', marginLeft: ScreenWidth * .05}}>
+								<Ionicons name='md-settings-outline' color={colors.white} size={ScreenHeight* .035}></Ionicons>
+							</TouchableOpacity>
+  	    					<Image style={styles.tinyLogo} source={require("../../assets/images/profile_pic.jpeg")} />
+							<Text style={styles.name}>{ first_name + " " + last_name }</Text>
+							<View style={styles.followView}>
+								<TouchableOpacity style={{alignItems: 'center'}} onPress={() => {navigation.navigate('SignIn')}}>
+									<Text style={styles.followText}>{follows}</Text>
+									<Text style={styles.followText}>Followers</Text>
+								</TouchableOpacity>
+								<TouchableOpacity style={{alignItems: 'center'}}>
+									<Text style={styles.followText}>{following}</Text>
+									<Text style={styles.followText}>Following</Text>
+								</TouchableOpacity>
+							</View>
+						</View>
+						<Text style={styles.recentEventText}>Recent Activity</Text>
+					</View>
+				}
 			/>
-		</View>
   	  </View>
   	);
 }
