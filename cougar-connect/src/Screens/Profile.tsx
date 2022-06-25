@@ -7,6 +7,7 @@ import { fonts } from '../Components/Fonts';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import EventCards from '../Components/EventCards';
 import SignIn from './SignIn';
+import { Avatar } from '@rneui/base';
 
 function Profile({ navigation }: { navigation: any }) {
 	
@@ -66,7 +67,7 @@ function Profile({ navigation }: { navigation: any }) {
 							<TouchableOpacity style={{alignSelf: 'flex-start', marginLeft: ScreenWidth * .05}}>
 								<Ionicons name='md-settings-outline' color={colors.white} size={ScreenHeight* .035}></Ionicons>
 							</TouchableOpacity>
-  	    					<Image style={styles.tinyLogo} source={require("../../assets/images/profile_pic.jpeg")} />
+							<Avatar rounded size={ScreenWidth * .3} source={require('../../assets/images/profile_pic.jpeg')} />
 							<Text style={styles.name}>{ first_name + " " + last_name }</Text>
 							<View style={styles.followView}>
 								<TouchableOpacity style={{alignItems: 'center'}} onPress={() => {navigation.navigate('SignIn')}}>

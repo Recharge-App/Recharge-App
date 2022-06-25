@@ -1,5 +1,4 @@
-import { useEffect } from 'react';
-import { View, Text, Button, Image, StyleSheet, Dimensions, TouchableOpacity, Alert, Pressable } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { colors } from './Colors';
 import { fonts } from './Fonts';
 import { ScreenWidth, ScreenHeight } from './Dimensions';
@@ -7,9 +6,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useToast } from 'react-native-toast-notifications';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Modal from "react-native-modal";
-import { useState } from 'react';
-import EventModal from './EventModal';
+import { Avatar } from '@rneui/base';
 
 
 function EventCards(props: any) {
@@ -32,7 +29,7 @@ function EventCards(props: any) {
 				<View style={longStyles.card}>
 					<View style={{flexDirection: 'row', width: ScreenWidth * .9, justifyContent: 'space-around'}}>
 						<View style={{justifyContent: 'center', alignItems: 'center'}}>
-							<Image style={{width: ScreenWidth * .25, height: ScreenHeight * .15, borderRadius: ScreenWidth * .15}} source={require('../../assets/images/profile_pic.jpeg')}></Image>
+							<Avatar rounded size={ScreenWidth * .27} source={require('../../assets/images/profile_pic.jpeg')} />
 						</View>
 						<View style={{alignItems: 'center', justifyContent: 'space-around'}}>
 							<Text style={longStyles.cardText}>{eventName}</Text>

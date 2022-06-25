@@ -7,6 +7,7 @@ import SignIn from './src/Screens/SignIn';
 import SignUp from './src/Screens/SignUp';
 import Onboarding from './src/Screens/Onboarding';
 import Tinder from './src/Screens/Tinder';
+import Follow from './src/Screens/Follow';
 
 // Import fonts here
 // https://docs.expo.dev/guides/using-custom-fonts/
@@ -47,10 +48,11 @@ function App() {
 		//<Onboarding />
 		//<SignIn />
 	  	//<SignUp />
+		//<Tinder/>
+		//<Follow/>
 		<ToastProvider>
 			<Tabs />
 		</ToastProvider>
-		//<Tinder/>
 	);
 }
 
