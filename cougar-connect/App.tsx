@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import Tabs from './src/Navigation/Tabs';
-import { SafeAreaView } from 'react-native'
+import { SafeAreaView, StatusBar } from 'react-native'
 import { ToastProvider } from 'react-native-toast-notifications';
 import SignIn from './src/Screens/SignIn';
 import SignUp from './src/Screens/SignUp';
@@ -51,6 +51,7 @@ function App() {
 		//<Tinder/>
 		//<Follow/>
 		<ToastProvider>
+			<StatusBar hidden />
 			<Tabs />
 		</ToastProvider>
 	);

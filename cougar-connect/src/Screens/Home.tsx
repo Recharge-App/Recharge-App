@@ -45,7 +45,7 @@ function Home({ navigation }: { navigation: any }) {
 	}
 
 	return (
-		<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+		<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.white }}>
 			<FlatList
 				data={events}
 				renderItem={({item}) => renderEventCards(item.eventName, item.organizerName, item.eventLocation)}
@@ -55,7 +55,7 @@ function Home({ navigation }: { navigation: any }) {
 				ItemSeparatorComponent={() => <View style={styles.separatorComponent}></View>}
 			/>
 			<EventModal 
-			visible={true} 
+			visible={false} 
 			eventName={
 				<View>
 					<Text style={styleProp.title}>

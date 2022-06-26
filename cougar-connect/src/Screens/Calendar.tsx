@@ -1,18 +1,98 @@
-import { View, Text, Button } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
+import { FlatList } from '@gemcook/react-native-animated-scroll-view';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Calendar as Cal,CalendarList, Agenda} from 'react-native-calendars';
-import {LocaleConfig} from 'react-native-calendars';
-
-
+import { CalendarList as Cal, CalendarList, Agenda, LocaleConfig } from 'react-native-calendars';
+import EventCards from '../Components/EventCards';
+import { ScreenHeight, ScreenWidth } from '../Components/Dimensions';
+import { fonts } from '../Components/Fonts';
+import { colors } from '../Components/Colors';
 
 
 function Calendar({ navigation }: { navigation: any }) {
+
+	// Variables
+	let first_name = "Mihir";
+	let last_name = "Sahu";
+	let follows = 100;
+	let following = 50;
+	const events = [
+		{
+			id: "1",
+			eventName: "You know what it is",
+			organizerName: "Mihir Sahu",
+			eventLocation: "CougarCS Discord Server",
+		},
+		{
+			id: "2",
+			eventName: "You know what it is",
+			organizerName: "Mihir Sahu",
+			eventLocation: "CougarCS Discord Server",
+		},
+		{
+			id: "3",
+			eventName: "You know what it is",
+			organizerName: "Mihir Sahu",
+			eventLocation: "CougarCS Discord Server",
+		},
+		{
+			id: "4",
+			eventName: "You know what it is",
+			organizerName: "Mihir Sahu",
+			eventLocation: "CougarCS Discord Server",
+		}
+	];
+
+	const renderEventCards = (eventName: string, organizerName: string, eventLocation: string) => {
+		return (
+			<EventCards eventName={eventName} organizerName={organizerName} eventLocation={eventLocation} size="long"></EventCards>
+		)
+	}
+
   return (
-    <Cal
-    />
+  	<View style={{flex: 1, backgroundColor: colors.white}}>
+
+    	<View style={styles.events}>
+  			<FlatList
+  				data={events}
+  				renderItem={({item}) => renderEventCards(item.eventName, item.organizerName, item.eventLocation)}
+  				keyExtractor={(item) => item.id}
+  				showsHorizontalScrollIndicator={false}
+  				showsVerticalScrollIndicator={false}
+  				ItemSeparatorComponent={() => <View style={styles.separatorComponent}></View>}
+				maxHeaderHeight={ScreenHeight * .52}
+				minHeaderHeight={0}
+				AnimationHeaderComponent={
+					<View>
+    					<Cal style={styles.calendar} horizontal={true} pagingEnabled={true} hideArrows={false}/>
+					</View>
+				}
+  			/>
+    	</View>
+	</View>
   );
 }
+
+const styles = StyleSheet.create({
+	calendar: {
+		width: ScreenWidth,
+	},
+	events: {
+		width: ScreenWidth,
+		alignItems: 'center',
+		justifyContent: 'center',
+		flex: 1,
+	},
+	separatorComponent: {
+		height: ScreenHeight * .02,
+	},
+	recentEventText: {
+		marginTop: ScreenHeight * .02, 
+		fontWeight: 'bold', 
+		alignSelf: 'center', 
+		marginBottom: ScreenHeight * .02,
+	},
+});
 
 
 export default Calendar;
