@@ -7,6 +7,7 @@ import { ScreenWidth, ScreenHeight } from '../Components/Dimensions';
 // This is the data we are going to display in the onboarding screen.
 import slides from '../Data/slides';
 
+
 export default Onboarding = () => {
     // horizontal scroll position
     const scrollX = useRef(new Animated.Value(0)).current;

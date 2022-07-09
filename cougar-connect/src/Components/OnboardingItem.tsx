@@ -4,7 +4,6 @@ import { ScreenWidth, ScreenHeight } from './Dimensions';
 import { colors } from './Colors';
 
 
-
 export default OnboardingItem = ({ item }) => {
 
 	const { width } = useWindowDimensions();

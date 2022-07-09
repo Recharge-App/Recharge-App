@@ -10,7 +10,6 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 const Tab = createBottomTabNavigator();
 const Tabs = () => {
 
-
     return(
         //<SafeAreaView style={{flex: 1}}>
         <NavigationContainer>            
@@ -18,7 +17,8 @@ const Tabs = () => {
         <Tab.Navigator
             screenOptions={{
                 tabBarShowLabel: false,
-                
+				tabBarInactiveBackgroundColor: colors.black,
+				tabBarActiveBackgroundColor: colors.black,
             }}
         >
             <Tab.Screen name="Home" component={Home} options={{
@@ -27,7 +27,7 @@ const Tabs = () => {
                     <View style={{alignItems:'center', justifyContent:'center'}}>
                     <Ionicons name="home-sharp" size={28} 
                     style={{
-                        color: focused ? colors.red : colors.black
+                        color: focused ? colors.lightYellow : colors.white
                     }}/>
                     </View>
                 ),
@@ -38,7 +38,7 @@ const Tabs = () => {
                 tabBarIcon: ({focused}) => (
                     <Ionicons name="search-sharp" size={28} 
                     style={{
-                        color: focused ? colors.red : colors.black
+                        color: focused ? colors.lightYellow : colors.white
                     }}/>
                 ),
             }}
@@ -48,7 +48,7 @@ const Tabs = () => {
                 tabBarIcon: ({focused}) => (
                     <Ionicons name="calendar-sharp" size={28} 
                     style={{
-                        color: focused ? colors.red : colors.black,
+                        color: focused ? colors.lightYellow : colors.white
                     }}/>
                 ),
             }}
@@ -59,7 +59,7 @@ const Tabs = () => {
                 tabBarIcon: ({focused}) => (
                     <Ionicons name="person-sharp" size={28} 
                     style={{
-                        color: focused ? colors.red : colors.black
+                        color: focused ? colors.lightYellow : colors.white
                     }}/>
                 ),
             }}

@@ -1,3 +1,4 @@
+import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { colors } from './Colors';
 import { fonts } from './Fonts';
@@ -9,13 +10,21 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Avatar } from '@rneui/base';
 
 
-function EventCards(props: any) {
+export interface eventProps {
+	eventName: string,
+	organizerName: string,
+	eventLocation: string,
+	cardSize?: string,
+}
+
+const EventCards: React.FC<eventProps> = ({
+	eventName,
+	organizerName,
+	eventLocation,
+	cardSize,
+}) => {
 	
 	// Variables
-	let eventName = props.eventName;
-	let organizerName = props.organizerName;
-	let eventLocation = props.eventLocation;
-	let size = props.size;
 
 	let registerConfirmation = "You successfully registered for the event!";
 	let peoplePress = "You pressed the people button";
@@ -23,7 +32,7 @@ function EventCards(props: any) {
 
 	const toast = useToast();
 
-	switch(size) {
+	switch(cardSize) {
 		case "long": {
 			return (
 				<View style={longStyles.card}>
@@ -74,24 +83,61 @@ function EventCards(props: any) {
 			);
 			break;
 		}
+		default: {
+			return (
+				<View style={longStyles.card}>
+					<View style={{alignSelf: 'flex-start', flexDirection: 'row', height: ScreenHeight * .22, width: ScreenWidth * .9, borderRadius: ScreenWidth * .06, justifyContent: 'space-around', backgroundColor: colors.lightYellow }}>
+						<View style={{justifyContent: 'space-evenly', alignItems: 'center'}}>
+							<Avatar 
+								rounded 
+								size={ScreenWidth * .23} 
+								source={require('../../assets/images/profile_pic.jpeg')}
+							/>
+							<Text style={{ fontSize: ScreenWidth * .04, fontWeight: '800' }}>{organizerName}</Text>
+						</View>
+						<View style={{alignItems: 'center', justifyContent: 'space-around'}}>
+							<Text style={{color: colors.black, fontFamily: fonts.Lato_700Bold, fontSize: ScreenWidth * .05, fontWeight: '800'}}>{eventName}</Text>
+							<Text style={longStyles.cardText}>{eventLocation}</Text>
+							<Text style={longStyles.cardText}>{organizerName}</Text>
+						</View>
+					</View>
+					<View style={longStyles.iconButtonView}>
+						<TouchableOpacity style={longStyles.iconButtons} onPress={() => toast.show(registerConfirmation, {type: 'custom', placement: 'top', duration: 4000, offset: 30, animationType: 'slide-in'})}>
+							<Ionicons name='md-thumbs-up' size={ScreenHeight * .04} color={colors.black}></Ionicons>
+						</TouchableOpacity>
+						<TouchableOpacity style={longStyles.iconButtons} onPress={() => toast.show(registerConfirmation, {type: 'custom', placement: 'top', duration: 4000, offset: 30, animationType: 'slide-in'})}>
+							<Ionicons name='md-information-circle' size={ScreenHeight * .04} color={colors.black}></Ionicons>
+						</TouchableOpacity>
+						<TouchableOpacity style={longStyles.iconButtons} onPress={() => toast.show(registerConfirmation, {type: 'custom', placement: 'top', duration: 4000, offset: 30, animationType: 'slide-in'})}>
+							<Ionicons name='md-send' size={ScreenHeight * .04} color={colors.black}></Ionicons>
+						</TouchableOpacity>
+						<TouchableOpacity style={longStyles.iconButtons} onPress={() => toast.show(peoplePress, {type: 'custom', placement: 'top', duration: 4000, offset: 30, animationType: 'slide-in'})}>
+							<Ionicons name='md-people' size={ScreenHeight * .04} color={colors.black}></Ionicons>
+						</TouchableOpacity>
+					</View>
+				</View>
+			);
+			break;
+		}
 	}
 }
 
 const longStyles = StyleSheet.create({
 	card: {
-		backgroundColor: colors.red,
+		backgroundColor: colors.darkYellow,
 		width: ScreenWidth * .9,
 		height: ScreenHeight * .30,
 		borderRadius: ScreenWidth * .06,
-		justifyContent: 'space-around',
+		justifyContent: 'space-between',
 	},
 	cardText: {
-		color: colors.white,
+		color: colors.black,
 		fontFamily: fonts.Lato_700Bold,
 	},
 	iconButtonView: {
 		flexDirection: 'row',
 		justifyContent: 'space-around',
+		paddingBottom: ScreenHeight * .015,
 	},
 	iconButtons: {
 		width: ScreenWidth * .10,
@@ -99,7 +145,6 @@ const longStyles = StyleSheet.create({
 		borderRadius: ScreenWidth * .02,
 		justifyContent: 'center',
 		alignItems: 'center',
-		backgroundColor: colors.red,
 	},
 });
 
