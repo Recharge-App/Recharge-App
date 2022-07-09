@@ -45,15 +45,15 @@ function App() {
 	return (
 		// Change this to switch between the login screen and the home screen
 	
-		//<Onboarding />
+		<Onboarding />
 		//<SignIn />
 	  	//<SignUp />
 		//<Tinder/>
 		//<Follow/>
-		<ToastProvider>
-			<StatusBar hidden />
-			<Tabs />
-		</ToastProvider>
+		//<ToastProvider>
+		//	<StatusBar hidden />
+		//	<Tabs />
+		//</ToastProvider>
 	);
 }
 
