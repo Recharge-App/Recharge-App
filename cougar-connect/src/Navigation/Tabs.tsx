@@ -1,9 +1,10 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { colors } from '../Components/Colors';
+import { ScreenWidth, ScreenHeight } from '../Components/Dimensions';
 import { Ionicons } from "@expo/vector-icons";
 import { View, TouchableOpacity} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { Home, Search, Calendar,Profile } from '../Screens/index'
+import { Home, Search, Calendar, Profile } from '../Screens/index'
 import TopTab from './TopTab';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -19,6 +20,9 @@ const Tabs = () => {
                 tabBarShowLabel: false,
 				tabBarInactiveBackgroundColor: colors.black,
 				tabBarActiveBackgroundColor: colors.black,
+				tabBarStyle: {
+					borderRadius: ScreenWidth * .05,
+				},
             }}
         >
             <Tab.Screen name="Home" component={Home} options={{

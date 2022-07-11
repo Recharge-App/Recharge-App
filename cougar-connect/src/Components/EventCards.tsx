@@ -10,18 +10,20 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Avatar } from '@rneui/base';
 
 
-export interface eventProps {
+interface eventProps {
 	eventName: string,
 	organizerName: string,
 	eventLocation: string,
-	cardSize?: string,
+	eventDateTime: Date[],
+	cardSize?: string
 }
 
 const EventCards: React.FC<eventProps> = ({
 	eventName,
 	organizerName,
 	eventLocation,
-	cardSize,
+	eventDateTime,
+	cardSize
 }) => {
 	
 	// Variables
@@ -81,6 +83,28 @@ const EventCards: React.FC<eventProps> = ({
 					</View>
 				</View>
 			);
+			break;
+		}
+		case "new": {
+
+			return (
+				<View style={newStyles.card}>
+					<View style={{alignItems: 'flex-start'}}>
+						<Text style={{color: colors.white, fontFamily: fonts.Lato_700Bold, fontSize: ScreenWidth * .05, fontWeight: '800', marginBottom: ScreenWidth * .02}}>{eventName}</Text>
+						<Text style={newStyles.cardText}>{eventLocation}</Text>
+					</View>
+					<View style={{alignSelf: 'center', width: ScreenWidth * .8, borderBottomWidth: ScreenWidth * .005, borderColor: colors.darkYellow, borderRadius: ScreenWidth * .05, marginTop: .02}}></View>
+					<View style={{alignItems: 'flex-start'}}>
+						<Text style={newStyles.cardText}>{
+							eventDateTime[0].toDateString().split(' ').slice(1,3).join(' ') + " - " + eventDateTime[1].toDateString().split(' ').slice(1,3).join(' ')
+						}</Text>
+						<Text style={newStyles.cardText}>{
+							eventDateTime[0].getHours() + ":" + eventDateTime[0].getMinutes() + " - " + eventDateTime[1].getHours() + ":" + eventDateTime[1].getMinutes() + " CST"
+						}</Text>
+					</View>
+				</View>
+			);
+
 			break;
 		}
 		default: {
@@ -173,6 +197,34 @@ const shortStyles = StyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'center',
 		backgroundColor: colors.red,
+	},
+});
+
+const newStyles = StyleSheet.create({
+	card: {
+		backgroundColor: colors.darkGray,
+		width: ScreenWidth * .9,
+		height: ScreenHeight * .27,
+		borderRadius: ScreenWidth * .06,
+		justifyContent: 'space-evenly',
+		paddingHorizontal: ScreenWidth * .05,
+	},
+	cardText: {
+		color: colors.white,
+		fontFamily: fonts.Lato_700Bold,
+		marginBottom: ScreenHeight * .01,
+	},
+	iconButtonView: {
+		flexDirection: 'row',
+		justifyContent: 'space-around',
+		paddingBottom: ScreenHeight * .015,
+	},
+	iconButtons: {
+		width: ScreenWidth * .10,
+		height: ScreenHeight * .05,
+		borderRadius: ScreenWidth * .02,
+		justifyContent: 'center',
+		alignItems: 'center',
 	},
 });
 

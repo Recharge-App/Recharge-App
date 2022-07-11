@@ -50,7 +50,7 @@ function Calendar({ navigation }: { navigation: any }) {
 	}
 
   return (
-  	<View style={{flex: 1, backgroundColor: colors.white}}>
+  	<View style={{flex: 1, backgroundColor: colors.black}}>
 
     	<View style={styles.events}>
   			<FlatList
@@ -76,6 +76,7 @@ function Calendar({ navigation }: { navigation: any }) {
 const styles = StyleSheet.create({
 	calendar: {
 		width: ScreenWidth,
+		backgroundColor: colors.black,
 	},
 	events: {
 		width: ScreenWidth,
