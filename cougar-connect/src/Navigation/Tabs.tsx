@@ -1,15 +1,15 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { colors } from '../Components/Colors';
+import { ScreenWidth, ScreenHeight } from '../Components/Dimensions';
 import { Ionicons } from "@expo/vector-icons";
 import { View, TouchableOpacity} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { Home, Search, Calendar,Profile } from '../Screens/index'
+import { Home, Search, Calendar, Profile } from '../Screens/index'
 import TopTab from './TopTab';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const Tab = createBottomTabNavigator();
 const Tabs = () => {
-
 
     return(
         //<SafeAreaView style={{flex: 1}}>
@@ -18,7 +18,11 @@ const Tabs = () => {
         <Tab.Navigator
             screenOptions={{
                 tabBarShowLabel: false,
-                
+				tabBarInactiveBackgroundColor: colors.black,
+				tabBarActiveBackgroundColor: colors.black,
+				tabBarStyle: {
+					borderRadius: ScreenWidth * .05,
+				},
             }}
         >
             <Tab.Screen name="Home" component={Home} options={{
@@ -27,7 +31,7 @@ const Tabs = () => {
                     <View style={{alignItems:'center', justifyContent:'center'}}>
                     <Ionicons name="home-sharp" size={28} 
                     style={{
-                        color: focused ? colors.red : colors.black
+                        color: focused ? colors.lightYellow : colors.white
                     }}/>
                     </View>
                 ),
@@ -38,7 +42,7 @@ const Tabs = () => {
                 tabBarIcon: ({focused}) => (
                     <Ionicons name="search-sharp" size={28} 
                     style={{
-                        color: focused ? colors.red : colors.black
+                        color: focused ? colors.lightYellow : colors.white
                     }}/>
                 ),
             }}
@@ -48,7 +52,7 @@ const Tabs = () => {
                 tabBarIcon: ({focused}) => (
                     <Ionicons name="calendar-sharp" size={28} 
                     style={{
-                        color: focused ? colors.red : colors.black,
+                        color: focused ? colors.lightYellow : colors.white
                     }}/>
                 ),
             }}
@@ -59,7 +63,7 @@ const Tabs = () => {
                 tabBarIcon: ({focused}) => (
                     <Ionicons name="person-sharp" size={28} 
                     style={{
-                        color: focused ? colors.red : colors.black
+                        color: focused ? colors.lightYellow : colors.white
                     }}/>
                 ),
             }}

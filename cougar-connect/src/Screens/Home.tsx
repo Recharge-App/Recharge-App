@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, FlatList } from 'react-native';
 import { Header } from '../Components';
-import EventCards from '../Components/EventCards';
+import EventCards, {eventProps} from '../Components/EventCards';
 import { ScreenWidth, ScreenHeight } from '../Components/Dimensions';
 import { styleProp, EventModal } from '../Components/EventModal';
 import { colors } from '../Components/Colors';
@@ -45,10 +45,14 @@ function Home({ navigation }: { navigation: any }) {
 	}
 
 	return (
-		<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.white }}>
+		<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.black }}>
 			<FlatList
 				data={events}
-				renderItem={({item}) => renderEventCards(item.eventName, item.organizerName, item.eventLocation)}
+				renderItem={({item}) => renderEventCards(
+						item.eventName,
+						item.organizerName,
+						item.eventLocation
+				)}
 				keyExtractor={(item) => item.id}
 				showsHorizontalScrollIndicator={false}
 				showsVerticalScrollIndicator={false}

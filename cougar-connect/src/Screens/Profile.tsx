@@ -12,41 +12,47 @@ import { Avatar } from '@rneui/base';
 function Profile({ navigation }: { navigation: any }) {
 	
 	// Variables
-	let first_name = "Mihir";
-	let last_name = "Sahu";
-	let follows = 100;
-	let following = 50;
+	const first_name = "Mihir";
+	const last_name = "Sahu";
+	const description = "Computer Science and Finance @UH InfoSec @ CougarCS";
+	const follows = 100;
+	const following = 50;
 	const events = [
 		{
 			id: "1",
 			eventName: "You know what it is",
 			organizerName: "Mihir Sahu",
 			eventLocation: "CougarCS Discord Server",
+			eventDateTime: [new Date, new Date],
 		},
 		{
 			id: "2",
 			eventName: "You know what it is",
 			organizerName: "Mihir Sahu",
 			eventLocation: "CougarCS Discord Server",
+			eventDateTime: [new Date, new Date],
 		},
 		{
 			id: "3",
 			eventName: "You know what it is",
 			organizerName: "Mihir Sahu",
 			eventLocation: "CougarCS Discord Server",
+			eventDateTime: [new Date, new Date],
 		},
 		{
 			id: "4",
 			eventName: "You know what it is",
 			organizerName: "Mihir Sahu",
 			eventLocation: "CougarCS Discord Server",
+			eventDateTime: [new Date, new Date],
 		}
 	];
 
-	const renderEventCards = (eventName: string, organizerName: string, eventLocation: string) => {
+	const renderEventCards = (eventName: string, organizerName: string, eventLocation: string, eventDateTime: Date[], cardSize: string) => {
+
 		return (
-			<EventCards eventName={eventName} organizerName={organizerName} eventLocation={eventLocation} size="long"></EventCards>
-		)
+			<EventCards eventName={eventName} organizerName={organizerName} eventLocation={eventLocation} eventDateTime={eventDateTime} cardSize={cardSize}></EventCards>
+		);
 	}
 
 	return (
@@ -54,21 +60,22 @@ function Profile({ navigation }: { navigation: any }) {
 			<FlatList
 				style={styles.footer}
 				data={events}
-				renderItem={({item}) => renderEventCards(item.eventName, item.organizerName, item.eventLocation)}
+				renderItem={({item}) => renderEventCards(item.eventName, item.organizerName, item.eventLocation, item.eventDateTime, "new")}
 				keyExtractor={(item) => item.id}
 				showsHorizontalScrollIndicator={false}
 				showsVerticalScrollIndicator={false}
 				ItemSeparatorComponent={() => <View style={styles.separatorComponent}></View>}
-				maxHeaderHeight={ScreenHeight * .49}
+				maxHeaderHeight={ScreenHeight * .75}
 				minHeaderHeight={0}
 				AnimationHeaderComponent={
 					<View>
 	  					<View style={styles.header}>
-							<TouchableOpacity style={{alignSelf: 'flex-start', marginLeft: ScreenWidth * .05}}>
-								<Ionicons name='md-settings-outline' color={colors.white} size={ScreenHeight* .035}></Ionicons>
+							<TouchableOpacity style={{alignSelf: 'flex-end', marginRight: ScreenWidth * .05}}>
+								<Ionicons name='md-settings-outline' color={colors.lightYellow} size={ScreenHeight* .035}></Ionicons>
 							</TouchableOpacity>
-							<Avatar rounded size={ScreenWidth * .3} source={require('../../assets/images/profile_pic.jpeg')} />
+							<Avatar rounded size={ScreenWidth * .28} source={require('../../assets/images/profile_pic.jpeg')} />
 							<Text style={styles.name}>{ first_name + " " + last_name }</Text>
+							<Text style={{width: ScreenWidth * .7, color: colors.white, textAlign: 'center', marginBottom: ScreenHeight * .03}}>{description}</Text>
 							<View style={styles.followView}>
 								<TouchableOpacity style={{alignItems: 'center'}} onPress={() => {navigation.navigate('SignIn')}}>
 									<Text style={styles.followText}>{follows}</Text>
@@ -80,7 +87,19 @@ function Profile({ navigation }: { navigation: any }) {
 								</TouchableOpacity>
 							</View>
 						</View>
-						<Text style={styles.recentEventText}>Recent Activity</Text>
+						<View style={{alignItems: 'center', marginTop: ScreenHeight * .04}}>
+							<TouchableOpacity style={{backgroundColor: colors.darkGray, height: ScreenHeight * .08, width: ScreenWidth * .75, borderRadius: ScreenWidth * .05, alignItems: 'center', justifyContent: 'center', marginBottom: ScreenHeight * .04}}>
+								<Text style={{ color: colors.white, fontSize: ScreenWidth * .06, fontWeight: '700', textAlign: 'center'}}>Edit Profile</Text>
+							</TouchableOpacity>
+							<View style={[styles.buttonContainer, {marginBottom: ScreenHeight * .04}]}>
+								<TouchableOpacity style={styles.signUp}>
+									<Text style={{ color: colors.black, fontSize: ScreenWidth * .06, fontWeight: '700' }}>Activity</Text>
+								</TouchableOpacity>
+								<TouchableOpacity style={styles.logIn}>
+									<Text style={{ color: colors.white, fontSize: ScreenWidth * .06, fontWeight: '700' }}>Created</Text>
+								</TouchableOpacity>
+							</View>
+						</View>
 					</View>
 				}
 			/>
@@ -93,14 +112,14 @@ const styles = StyleSheet.create({
 		flex: 1, 
 		alignItems: 'center', 
 		justifyContent: 'flex-start',
-		backgroundColor: colors.white,
+		backgroundColor: colors.black,
 		height: ScreenHeight,
 		width: ScreenWidth,
 	},
 	header: {
 		alignItems: 'center', 
 		justifyContent: 'center',
-		backgroundColor: colors.red,
+		backgroundColor: colors.black,
 		height: ScreenHeight * .45,
 		width: ScreenWidth,
 	},
@@ -126,7 +145,7 @@ const styles = StyleSheet.create({
 		fontFamily: fonts.Lato_700Bold,
 	},
 	footer: {
-		backgroundColor: colors.white,
+		backgroundColor: colors.black,
 		flex: 1,
 	},
 	recentEventText: {
@@ -134,9 +153,33 @@ const styles = StyleSheet.create({
 		fontWeight: 'bold', 
 		alignSelf: 'center', 
 		marginBottom: ScreenHeight * .02,
+		color: colors.white,
 	},
 	separatorComponent: {
 		height: ScreenHeight * .02,
+	},
+	buttonContainer: {
+		backgroundColor: colors.darkGray,
+		height: ScreenHeight * .08,
+		width: ScreenWidth * .75,
+		borderRadius: ScreenWidth * .05,
+		flexDirection: 'row',
+	},
+	signUp: {
+		height: ScreenHeight * .08,
+		width: ScreenWidth * .37,
+		borderRadius: ScreenWidth * .05,
+		backgroundColor: colors.lightYellow,
+		alignItems: 'center',
+		justifyContent: 'center',
+	},
+	logIn: {
+		height: ScreenHeight * .08,
+		width: ScreenWidth * .37,
+		borderRadius: ScreenWidth * .05,
+		backgroundColor: colors.darkGray,
+		alignItems: 'center',
+		justifyContent: 'center',
 	},
 });
 
