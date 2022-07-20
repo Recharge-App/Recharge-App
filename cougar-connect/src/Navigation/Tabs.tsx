@@ -38,7 +38,7 @@ const Tabs = () => {
             }}
             />
             <Tab.Screen name="Search" component={TopTab} options={{
-                headerShown:false,
+                headerShown: false,
                 tabBarIcon: ({focused}) => (
                     <Ionicons name="search-sharp" size={28} 
                     style={{
