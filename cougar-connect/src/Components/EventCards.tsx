@@ -90,7 +90,7 @@ const EventCards: React.FC<eventProps> = ({
 			return (
 				<View style={newStyles.card}>
 					<View style={{alignItems: 'flex-start'}}>
-						<Text style={{color: colors.white, fontFamily: fonts.Lato_700Bold, fontSize: ScreenWidth * .05, fontWeight: '800', marginBottom: ScreenWidth * .02}}>{eventName}</Text>
+						<Text style={{color: colors.white, fontSize: ScreenWidth * .05, fontWeight: '800', marginBottom: ScreenWidth * .02}}>{eventName}</Text>
 						<Text style={newStyles.cardText}>{eventLocation}</Text>
 					</View>
 					<View style={{alignSelf: 'center', width: ScreenWidth * .8, borderBottomWidth: ScreenWidth * .005, borderColor: colors.darkYellow, borderRadius: ScreenWidth * .05, marginTop: .02}}></View>
@@ -120,7 +120,7 @@ const EventCards: React.FC<eventProps> = ({
 							<Text style={{ fontSize: ScreenWidth * .04, fontWeight: '800' }}>{organizerName}</Text>
 						</View>
 						<View style={{alignItems: 'center', justifyContent: 'space-around'}}>
-							<Text style={{color: colors.black, fontFamily: fonts.Lato_700Bold, fontSize: ScreenWidth * .05, fontWeight: '800'}}>{eventName}</Text>
+							<Text style={{color: colors.black, fontSize: ScreenWidth * .05, fontWeight: '800'}}>{eventName}</Text>
 							<Text style={longStyles.cardText}>{eventLocation}</Text>
 							<Text style={longStyles.cardText}>{organizerName}</Text>
 						</View>
@@ -156,7 +156,6 @@ const longStyles = StyleSheet.create({
 	},
 	cardText: {
 		color: colors.black,
-		fontFamily: fonts.Lato_700Bold,
 	},
 	iconButtonView: {
 		flexDirection: 'row',
@@ -183,7 +182,6 @@ const shortStyles = StyleSheet.create({
 	},
 	cardText: {
 		color: colors.white,
-		fontFamily: fonts.Lato_700Bold,
 	},
 	iconButtonView: {
 		flexDirection: 'row',
@@ -211,7 +209,6 @@ const newStyles = StyleSheet.create({
 	},
 	cardText: {
 		color: colors.white,
-		fontFamily: fonts.Lato_700Bold,
 		marginBottom: ScreenHeight * .01,
 	},
 	iconButtonView: {

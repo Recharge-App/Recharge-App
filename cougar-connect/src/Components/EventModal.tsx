@@ -20,13 +20,11 @@ type Props = {
 // This gets exported and should be used to style the eventName, eventLocation, eventDate, and eventOrganizer props
 export const styleProp = StyleSheet.create({
 	title: {
-		fontFamily: fonts.Lato_700Bold,
 		color: colors.red,
 		fontSize: 25,
 		fontWeight: '600',
 	},
 	eventDetails: {
-		fontFamily: fonts.Lato_700Bold,
 		color: colors.red,
 		fontSize: 18,
 	},
@@ -70,7 +68,7 @@ export const EventModal: React.FC<Props> = ({ visible, eventName, eventLocation,
 					</View>
 				</View>
 				<View style={styles.eventAbout}>
-					<Text style={{fontFamily: fonts.Lato_700Bold, fontSize: 18, color: colors.red}}>About</Text>
+					<Text style={{fontSize: 18, color: colors.red}}>About</Text>
 					<View>{eventAbout}</View>
 				</View>
 			</View>

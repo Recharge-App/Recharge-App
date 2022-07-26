@@ -22,6 +22,7 @@ const Tabs = () => {
 				tabBarActiveBackgroundColor: colors.black,
 				tabBarStyle: {
 					borderRadius: ScreenWidth * .05,
+					backgroundColor: colors.black
 				},
             }}
         >
