@@ -11,6 +11,7 @@ import SignUp from '../Screens/SignUp';
 import TopTab from './TopTab';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { State } from 'react-native-gesture-handler';
+import { useAuth } from '../Components/Authentication';
 
 // https://reactnavigation.org/docs/auth-flow/
 // https://reactnavigation.org/docs/stack-navigator/
@@ -20,7 +21,7 @@ const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
 
-const Tabs = () => {
+const AppTab = () => {
 
     return(
         //<SafeAreaView style={{flex: 1}}>
@@ -83,34 +84,51 @@ const Tabs = () => {
     )
 }
 
-const Stacks = () => {
+const AuthStack = () => {
     
     return(
-        <NavigationContainer>
-            <Stack.Navigator
-                screenOptions={{
-                    headerShown: false
-                }}
-            >
-                {State.userToken == null ? (
-                    <>
+        <Stack.Navigator
+            screenOptions={{
+                headerShown: false
+            }}
+        >
+            <Stack.Screen
+                name="SignIn"
+                component={SignIn}
+            />
+            <Stack.Screen
+                name="SignUp"
+                component={SignUp}
+            />
+        </Stack.Navigator>
+    );
+}
+
+const Stacks = () => {
+
+    const { authData } = useAuth();
+    //console.log("Logged in with password " + authData?.password);
+    
+    return(
+            <NavigationContainer>
+                <Stack.Navigator
+                    screenOptions={{
+                        headerShown: false
+                    }}
+                >
+                    {authData?.password === "mihirsahu" ? (
                         <Stack.Screen
-                            name="SignIn"
-                            component={SignIn}
+                            name="App"
+                            component={AppTab}
                         />
+                    ) : (
                         <Stack.Screen
-                            name="SignUp"
-                            component={SignUp}
+                            name="Auth"
+                            component={AuthStack}
                         />
-                    </>
-                ) : (
-                    <Stack.Screen
-                        name="Home"
-                        component={Tabs}
-                    />
-                )}
-            </Stack.Navigator>
-        </NavigationContainer>
+                    )}
+                </Stack.Navigator>
+            </NavigationContainer>
     );
 }
 

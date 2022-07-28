@@ -8,6 +8,7 @@ import SignUp from './src/Screens/SignUp';
 import Onboarding from './src/Screens/Onboarding';
 import Tinder from './src/Screens/Tinder';
 import Follow from './src/Screens/Follow';
+import { AuthProvider } from './src/Components/Authentication';
 
 // Import fonts here
 // https://docs.expo.dev/guides/using-custom-fonts/
@@ -50,7 +51,9 @@ function App() {
 		//<Follow/>
 		<ToastProvider>
 			<StatusBar hidden />
-			<Stacks />
+        	<AuthProvider>
+				<Stacks />
+        	</AuthProvider>
 		</ToastProvider>
 	);
 }

@@ -4,6 +4,7 @@ import { colors } from '../Components/Colors';
 import { ScreenWidth, ScreenHeight } from '../Components/Dimensions';
 import * as yup from 'yup';
 import { Formik } from 'formik';
+import { useAuth } from '../Components/Authentication';
 
 
 const reviewSchema = yup.object({
@@ -12,6 +13,8 @@ const reviewSchema = yup.object({
 });
 
 const SignIn = ({ navigation }) => {
+
+    const auth = useAuth();
 	
     return (
         <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={styles.root}>
@@ -24,13 +27,33 @@ const SignIn = ({ navigation }) => {
 							<Formik
 								initialValues={{ email: '', password: ''}}
 								validationSchema={reviewSchema}
-								onSubmit={() => {Alert.alert('Logged in')}}
+								onSubmit={(values) => {
+                                    auth.signIn();
+                                }}
 							>
 								{({ handleChange, handleBlur, handleSubmit, values, errors, touched }) => (
 									<View>
-										<TextInput placeholder='Email' placeholderTextColor='#979797' style={styles.email_input} autoCapitalize='none' onChangeText={handleChange('email')} value={values.email} onBlur={handleBlur('email')} />
+										<TextInput 
+                                            placeholder='Email' 
+                                            placeholderTextColor='#979797' 
+                                            style={styles.email_input} 
+                                            autoCapitalize='none' 
+                                            onChangeText={handleChange('email')} 
+                                            value={values.email} onBlur={handleBlur('email')} 
+                                        />
+
 										{errors.email && touched.email && <Text style={{color: colors.red}}>{errors.email}</Text>}
-										<TextInput secureTextEntry={true} placeholder='Password' placeholderTextColor='#979797' style={styles.password_input} autoCapitalize='none' onChangeText={handleChange('password')} value={values.password} onBlur={handleBlur('password')} />
+
+										<TextInput 
+                                            secureTextEntry={true} 
+                                            placeholder='Password' 
+                                            placeholderTextColor='#979797' 
+                                            style={styles.password_input} 
+                                            autoCapitalize='none' 
+                                            onChangeText={handleChange('password')} 
+                                            value={values.password} 
+                                            onBlur={handleBlur('password')} />
+
 										{errors.password && touched.password && <Text style={{color: colors.red}}>{errors.password}</Text>}
 
             	            			<TouchableOpacity>
@@ -39,7 +62,7 @@ const SignIn = ({ navigation }) => {
 
             	            			<View style={styles.button}>
             	            			    <Button
-            	            			        onPress={() => handleSubmit()}
+            	            			        onPress={(values) => handleSubmit(values)}
             	            			        title="Login"
             	            			        color= {colors.white}
             	            			        accessibilityLabel="Learn more about this purple button"

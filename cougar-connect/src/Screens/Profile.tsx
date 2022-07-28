@@ -8,8 +8,12 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import EventCards from '../Components/EventCards';
 import SignIn from './SignIn';
 import { Avatar } from '@rneui/base';
+import { useAuth } from '../Components/Authentication';
+
 
 function Profile({ navigation }: { navigation: any }) {
+
+    const auth = useAuth();
 	
 	// Variables
 	const first_name = "Mihir";
@@ -70,9 +74,19 @@ function Profile({ navigation }: { navigation: any }) {
 				AnimationHeaderComponent={
 					<View>
 	  					<View style={styles.header}>
-							<TouchableOpacity style={{alignSelf: 'flex-end', marginRight: ScreenWidth * .05}}>
-								<Ionicons name='md-settings-outline' color={colors.lightYellow} size={ScreenHeight* .035}></Ionicons>
-							</TouchableOpacity>
+							<View style={{flexDirection: 'row', justifyContent: 'space-between', width: ScreenWidth}}>
+								<TouchableOpacity style={{alignSelf: 'flex-start', marginLeft: ScreenWidth * .05}}>
+									<Ionicons name='md-settings-outline' color={colors.lightYellow} size={ScreenHeight* .035}></Ionicons>
+								</TouchableOpacity>
+								<TouchableOpacity 
+									style={{alignSelf: 'flex-end', marginRight: ScreenWidth * .05}}
+									onPress={() => {
+										auth.signOut();
+									}}
+								>
+									<Ionicons name='md-exit-outline' color={colors.lightYellow} size={ScreenHeight* .035}></Ionicons>
+								</TouchableOpacity>
+							</View>
 							<Avatar rounded size={ScreenWidth * .28} source={require('../../assets/images/profile_pic.jpeg')} />
 							<Text style={styles.name}>{ first_name + " " + last_name }</Text>
 							<Text style={{width: ScreenWidth * .7, color: colors.white, textAlign: 'center', marginBottom: ScreenHeight * .03}}>{description}</Text>
