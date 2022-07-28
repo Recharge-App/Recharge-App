@@ -22,31 +22,36 @@ function Calendar({ navigation }: { navigation: any }) {
 			eventName: "You know what it is",
 			organizerName: "Mihir Sahu",
 			eventLocation: "CougarCS Discord Server",
+			eventDateTime: [new Date, new Date],
 		},
 		{
 			id: "2",
 			eventName: "You know what it is",
 			organizerName: "Mihir Sahu",
 			eventLocation: "CougarCS Discord Server",
+			eventDateTime: [new Date, new Date],
 		},
 		{
 			id: "3",
 			eventName: "You know what it is",
 			organizerName: "Mihir Sahu",
 			eventLocation: "CougarCS Discord Server",
+			eventDateTime: [new Date, new Date],
 		},
 		{
 			id: "4",
 			eventName: "You know what it is",
 			organizerName: "Mihir Sahu",
 			eventLocation: "CougarCS Discord Server",
+			eventDateTime: [new Date, new Date],
 		}
 	];
 
-	const renderEventCards = (eventName: string, organizerName: string, eventLocation: string) => {
+	const renderEventCards = (eventName: string, organizerName: string, eventLocation: string, eventDateTime: Date[], cardSize: string) => {
+
 		return (
-			<EventCards eventName={eventName} organizerName={organizerName} eventLocation={eventLocation} size="long"></EventCards>
-		)
+			<EventCards eventName={eventName} organizerName={organizerName} eventLocation={eventLocation} eventDateTime={eventDateTime} cardSize={cardSize}></EventCards>
+		);
 	}
 
   return (
@@ -55,7 +60,7 @@ function Calendar({ navigation }: { navigation: any }) {
     	<View style={styles.events}>
   			<FlatList
   				data={events}
-  				renderItem={({item}) => renderEventCards(item.eventName, item.organizerName, item.eventLocation)}
+				renderItem={({item}) => renderEventCards(item.eventName, item.organizerName, item.eventLocation, item.eventDateTime, "new")}
   				keyExtractor={(item) => item.id}
   				showsHorizontalScrollIndicator={false}
   				showsVerticalScrollIndicator={false}

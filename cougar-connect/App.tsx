@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import Tabs from './src/Navigation/Tabs';
+import Stacks from './src/Navigation/Tabs';
 import { SafeAreaView, StatusBar } from 'react-native'
 import { ToastProvider } from 'react-native-toast-notifications';
 import SignIn from './src/Screens/SignIn';
@@ -50,7 +50,7 @@ function App() {
 		//<Follow/>
 		<ToastProvider>
 			<StatusBar hidden />
-			<Tabs />
+			<Stacks />
 		</ToastProvider>
 	);
 }

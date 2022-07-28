@@ -12,7 +12,7 @@ const reviewSchema = yup.object({
 	password: yup.string().min(5, "Password must have at least 5 characters.").required("Password is required."),
 });
 
-const SignUp = () => {
+const SignUp = ({ navigation }) => {
 
     return (
         <View style={styles.root}>
@@ -52,7 +52,9 @@ const SignUp = () => {
                         <View style={styles.no_account_container}>
                             <Text style={styles.no_account_text}>Already have an account? </Text>
 
-                            <TouchableOpacity>
+                            <TouchableOpacity
+                                onPress={() => navigation.navigate("SignIn")}
+                            >
                                 <Text style={styles.login_input}>Login</Text>
                             </TouchableOpacity>
                         </View>

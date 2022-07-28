@@ -1,20 +1,29 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
 import { colors } from '../Components/Colors';
 import { ScreenWidth, ScreenHeight } from '../Components/Dimensions';
 import { Ionicons } from "@expo/vector-icons";
 import { View, TouchableOpacity} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { Home, Search, Calendar, Profile } from '../Screens/index'
+import SignIn from '../Screens/SignIn';
+import SignUp from '../Screens/SignUp';
 import TopTab from './TopTab';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { State } from 'react-native-gesture-handler';
+
+// https://reactnavigation.org/docs/auth-flow/
+// https://reactnavigation.org/docs/stack-navigator/
+// https://reactnavigation.org/docs/nesting-navigators/
 
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
+
+
 const Tabs = () => {
 
     return(
         //<SafeAreaView style={{flex: 1}}>
-        <NavigationContainer>            
-
         <Tab.Navigator
             screenOptions={{
                 tabBarShowLabel: false,
@@ -70,9 +79,40 @@ const Tabs = () => {
             }}
             />
         </Tab.Navigator>
-        </NavigationContainer>
         //</SafeAreaView>
     )
 }
 
-export default Tabs;
+const Stacks = () => {
+    
+    return(
+        <NavigationContainer>
+            <Stack.Navigator
+                screenOptions={{
+                    headerShown: false
+                }}
+            >
+                {State.userToken == null ? (
+                    <>
+                        <Stack.Screen
+                            name="SignIn"
+                            component={SignIn}
+                        />
+                        <Stack.Screen
+                            name="SignUp"
+                            component={SignUp}
+                        />
+                    </>
+                ) : (
+                    <Stack.Screen
+                        name="Home"
+                        component={Tabs}
+                    />
+                )}
+            </Stack.Navigator>
+        </NavigationContainer>
+    );
+}
+
+
+export default Stacks;
