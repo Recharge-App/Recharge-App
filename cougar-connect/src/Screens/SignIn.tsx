@@ -28,7 +28,7 @@ const SignIn = ({ navigation }) => {
 								initialValues={{ email: '', password: ''}}
 								validationSchema={reviewSchema}
 								onSubmit={(values) => {
-                                    auth.signIn();
+                                    auth.signIn(values);
                                 }}
 							>
 								{({ handleChange, handleBlur, handleSubmit, values, errors, touched }) => (

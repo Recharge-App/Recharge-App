@@ -6,7 +6,7 @@ import React, {createContext, useState, useContext} from 'react';
 type AuthContextData = {
     authData?: AuthData;
     loading: boolean;
-    signIn(): Promise<void>;
+    signIn(data: AuthData): Promise<void>;
     signOut(): void;
   };
       
@@ -23,17 +23,19 @@ export const AuthProvider: React.FC = ({children}) => {
   //The loading part will be explained in the persist step session
   const [loading, setLoading] = useState(true);
 
-  const signIn = async () => {
+  const signIn = async (data: AuthData) => {
     //call the service passing credential (email and password).
     //In a real App this data will be provided by the user from some InputText components.
+    /*
     const _authData = {
         email: '2002mihir@gmail.com',
         password: 'mihirsahu'
     };
+    */
 
     //Set the data in the context, so the App can be notified
     //and send the user to the AuthStack
-    setAuthData(_authData);
+    setAuthData(data);
   };
 
   const signOut = async () => {
