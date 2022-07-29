@@ -13,6 +13,7 @@ type AuthContextData = {
 type AuthData = {
   email: string;
   password: string;
+  authenticated?: boolean;
 };
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
@@ -33,9 +34,15 @@ export const AuthProvider: React.FC = ({children}) => {
     };
     */
 
+	// TODO: Get password salt:hash from database, check it with password, and add authenticated key to authData
+
     //Set the data in the context, so the App can be notified
     //and send the user to the AuthStack
-    setAuthData(data);
+    setAuthData({
+		"email": data.email,
+		"password": data.password,
+		"authenticated": data.password === "password",
+	});
   };
 
   const signOut = async () => {

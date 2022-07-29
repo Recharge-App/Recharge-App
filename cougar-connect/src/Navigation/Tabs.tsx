@@ -116,7 +116,7 @@ const Stacks = () => {
                         headerShown: false
                     }}
                 >
-                    {authData?.password === "mihirsahu" ? (
+                    {authData?.authenticated ? (
                         <Stack.Screen
                             name="App"
                             component={AppTab}
