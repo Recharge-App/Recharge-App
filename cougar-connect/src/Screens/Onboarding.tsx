@@ -8,7 +8,7 @@ import { ScreenWidth, ScreenHeight } from '../Components/Dimensions';
 import slides from '../Data/slides';
 
 
-export default Onboarding = () => {
+export default Onboarding = ({ navigation }) => {
     // horizontal scroll position
     const scrollX = useRef(new Animated.Value(0)).current;
 
@@ -28,10 +28,16 @@ export default Onboarding = () => {
 const Buttons = () => {
 	return(
 		<View style={styles.buttonContainer}>
-			<TouchableOpacity style={styles.signUp}>
+			<TouchableOpacity
+                style={styles.signUp}
+                onPress={() => navigation.navigate("SignUp")}
+            >
 				<Text style={{ color: colors.black, fontSize: ScreenWidth * .06, fontWeight: '700' }}>Sign Up</Text>
 			</TouchableOpacity>
-			<TouchableOpacity style={styles.logIn}>
+			<TouchableOpacity 
+                style={styles.logIn}
+                onPress={() => navigation.navigate("SignIn")}
+            >
 				<Text style={{ color: colors.white, fontSize: ScreenWidth * .06, fontWeight: '700' }}>Log in</Text>
 			</TouchableOpacity>
 		</View>

@@ -9,6 +9,7 @@ import { Home, Search, Calendar, Profile } from '../Screens/index'
 import SignIn from '../Screens/SignIn';
 import SignUp from '../Screens/SignUp';
 import TopTab from './TopTab';
+import Onboarding from '../Screens/Onboarding';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { State } from 'react-native-gesture-handler';
 import { useAuth } from '../Components/Authentication';
@@ -92,6 +93,10 @@ const AuthStack = () => {
                 headerShown: false
             }}
         >
+            <Stack.Screen
+                name="Onboarding"
+                component={Onboarding}
+            />
             <Stack.Screen
                 name="SignIn"
                 component={SignIn}
