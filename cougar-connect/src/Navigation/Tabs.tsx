@@ -29,11 +29,19 @@ const AppTab = () => {
         <Tab.Navigator
             screenOptions={{
                 tabBarShowLabel: false,
-				tabBarInactiveBackgroundColor: colors.black,
-				tabBarActiveBackgroundColor: colors.black,
+				//tabBarInactiveBackgroundColor: colors.black,
+				//tabBarActiveBackgroundColor: colors.black,
 				tabBarStyle: {
-					borderRadius: ScreenWidth * .05,
-					backgroundColor: colors.black
+                    borderTopLeftRadius: ScreenHeight * .03,
+                    borderTopRightRadius: ScreenHeight * .03,
+                    height: ScreenHeight * .1,
+                    position: 'absolute',
+					backgroundColor: colors.darkGray,
+                    borderTopWidth: 0,
+                    borderBottomWidth: 0,
+                    shadowOpacity: 0,
+                    elevation: 0,
+                    bottom: 0,
 				},
             }}
         >
