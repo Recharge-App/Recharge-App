@@ -1,4 +1,6 @@
 import React, {createContext, useState, useContext} from 'react';
+import { Alert } from 'react-native';
+import { storeStringData, storeObjectData, getStringData, getObjectData } from '../Components/Storage';
 
 //https://levelup.gitconnected.com/react-native-authentication-flow-the-simplest-and-most-efficient-way-3aa13e80af61
 
@@ -41,8 +43,16 @@ export const AuthProvider: React.FC = ({children}) => {
     setAuthData({
 		"email": data.email,
 		"password": data.password,
-		"authenticated": data.password === "password",
-	});
+		"authenticated": data.email === "2002mihir@gmail.com" && data.password === "password",
+	  });
+
+    /*
+    if (authData?.authenticated == false) {
+      Alert.alert("Wrong username or password!");
+    }
+    */
+
+    // TODO: Then store the cookie on the device with Async Storage
   };
 
   const signOut = async () => {
