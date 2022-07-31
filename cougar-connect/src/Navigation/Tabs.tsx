@@ -10,9 +10,8 @@ import SignIn from '../Screens/SignIn';
 import SignUp from '../Screens/SignUp';
 import TopTab from './TopTab';
 import Onboarding from '../Screens/Onboarding';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { State } from 'react-native-gesture-handler';
 import { useAuth } from '../Components/Authentication';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 // https://reactnavigation.org/docs/auth-flow/
 // https://reactnavigation.org/docs/stack-navigator/
@@ -25,12 +24,10 @@ const Stack = createStackNavigator();
 const AppTab = () => {
 
     return(
-        //<SafeAreaView style={{flex: 1}}>
+        <SafeAreaView style={{flex: 1}}>
         <Tab.Navigator
             screenOptions={{
                 tabBarShowLabel: false,
-				//tabBarInactiveBackgroundColor: colors.black,
-				//tabBarActiveBackgroundColor: colors.black,
 				tabBarStyle: {
                     borderTopLeftRadius: ScreenHeight * .03,
                     borderTopRightRadius: ScreenHeight * .03,
@@ -51,7 +48,7 @@ const AppTab = () => {
                     <View style={{alignItems:'center', justifyContent:'center'}}>
                     <Ionicons name="home-sharp" size={28} 
                     style={{
-                        color: focused ? colors.lightYellow : colors.white
+                        color: focused ? colors.lightYellow : colors.white,
                     }}/>
                     </View>
                 ),
@@ -99,7 +96,7 @@ const AppTab = () => {
             }}
             />
         </Tab.Navigator>
-        //</SafeAreaView>
+        </SafeAreaView>
     )
 }
 
@@ -133,6 +130,7 @@ const Stacks = () => {
     //console.log("Logged in with password " + authData?.password);
     
     return(
+        <SafeAreaProvider>
             <NavigationContainer>
                 <Stack.Navigator
                     screenOptions={{
@@ -152,6 +150,7 @@ const Stacks = () => {
                     )}
                 </Stack.Navigator>
             </NavigationContainer>
+        </SafeAreaProvider>
     );
 }
 

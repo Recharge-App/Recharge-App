@@ -129,6 +129,7 @@ const styles = StyleSheet.create({
 		backgroundColor: colors.black,
 		height: ScreenHeight,
 		width: ScreenWidth,
+		paddingBottom: ScreenHeight * .1,
 	},
 	header: {
 		alignItems: 'center', 

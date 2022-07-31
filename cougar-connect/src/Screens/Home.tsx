@@ -50,7 +50,7 @@ function Home({ navigation }: { navigation: any }) {
 	}
 
 	return (
-		<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.black }}>
+		<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.black, paddingBottom: ScreenHeight * .1}}>
 			<FlatList
 				data={events}
 				renderItem={({item}) => renderEventCards(item.eventName, item.organizerName, item.eventLocation, item.eventDateTime, "new")}

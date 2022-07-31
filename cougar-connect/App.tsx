@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import Stacks from './src/Navigation/Tabs';
-import { SafeAreaView, StatusBar } from 'react-native'
+import { StatusBar } from 'react-native'
 import { ToastProvider } from 'react-native-toast-notifications';
 import SignIn from './src/Screens/SignIn';
 import SignUp from './src/Screens/SignUp';

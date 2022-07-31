@@ -55,7 +55,7 @@ function Calendar({ navigation }: { navigation: any }) {
 	}
 
   return (
-  	<View style={{flex: 1, backgroundColor: colors.black}}>
+  	<View style={{flex: 1, backgroundColor: colors.black, paddingBottom: ScreenHeight * .1}}>
 
     	<View style={styles.events}>
   			<FlatList
