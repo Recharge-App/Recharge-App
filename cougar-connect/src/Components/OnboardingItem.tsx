@@ -9,7 +9,9 @@ export default OnboardingItem = ({ item }) => {
 	const { width } = useWindowDimensions();
 	return (
 		<View style={[styles.container, { width }]}>
-			<Image source={item.image} style={[styles.image, { width, resizeMode: 'contain' }]}/>
+            <View style={{width: ScreenWidth}}>
+                {item.image}
+            </View>
 			
 			<View style={{ flex: 0.3 }}>
 			    <Text style={styles.title}>

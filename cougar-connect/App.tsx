@@ -9,6 +9,7 @@ import Onboarding from './src/Screens/Onboarding';
 import Tinder from './src/Screens/Tinder';
 import Follow from './src/Screens/Follow';
 import { AuthProvider } from './src/Components/Authentication';
+import 'react-native-gesture-handler';
 
 // Import fonts here
 // https://docs.expo.dev/guides/using-custom-fonts/
