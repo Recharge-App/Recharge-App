@@ -67,6 +67,16 @@ const AppTab = () => {
                 ),
             }}
             />
+            <Tab.Screen name="Add" component={TopTab} options={{
+                headerShown: false,
+                tabBarIcon: ({focused}) => (
+                    <Ionicons name="add-circle" size={40} 
+                    style={{
+                        color: focused ? colors.lightYellow : colors.white
+                    }}/>
+                ),
+            }}
+            />
             <Tab.Screen name="Calendar" component={Calendar} options={{
                 headerShown:false,
                 tabBarIcon: ({focused}) => (
