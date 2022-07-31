@@ -1,76 +1,120 @@
 import React from 'react'
-import { View, Text, Button, Alert, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
+import { View, Text, Button, Alert, StyleSheet, TextInput, TouchableOpacity, KeyboardAvoidingView, Platform } from 'react-native';
 import { colors } from '../Components/Colors';
 import { ScreenWidth, ScreenHeight } from '../Components/Dimensions';
 import * as yup from 'yup';
 import { Formik } from 'formik';
+import { useAuth } from '../Components/Authentication';
 
 
 const reviewSchema = yup.object({
-	username: yup.string().required("Username is required."),
-	email: yup.string().email("Must be a valid UH email.").required("Email is required."),
-	password: yup.string().min(5, "Password must have at least 5 characters.").required("Password is required."),
+	email: yup.string().email('Must be a valid UH email.').required('Email is required.'),
+	password: yup.string().min(5, "Password must have at least 5 characters.").required('Password is required.'),
 });
 
 const SignUp = ({ navigation }) => {
 
-    return (
+    const auth = useAuth();
+
+    return(
         <View style={styles.root}>
-        <Text style={styles.logo_text}>UpCoogs</Text>
-            <View style={styles.signup}>
-                <Text style={styles.signup_text}>Sign up</Text>
-                <Text style={styles.signup_text_small}>Create your account</Text>
-
-                    <View style={styles.form_container}>
-
-						<Formik
-							initialValues={{ username: '', email: '', password: ''}}
-							validationSchema={reviewSchema}
-							onSubmit={() => {Alert.alert('Created an account')}}
-						>
-							{({ handleChange, handleBlur, handleSubmit, values, errors, touched }) => (
-								<View>
-                        			<TextInput placeholder='Full Name' placeholderTextColor='#979797' style={styles.name_email_input} autoCapitalize='none' onChangeText={handleChange('username')} value={values.username} onBlur={handleBlur('username')} />
-									{errors.username && touched.username && <Text style={{color: colors.red}}>{errors.username}</Text>}
-                        			<TextInput placeholder='Email' placeholderTextColor='#979797' style={styles.name_email_input} autoCapitalize='none' onChangeText={handleChange('email')} value={values.email} onBlur={handleBlur('email')} />
-									{errors.email && touched.email && <Text style={{color: colors.red}}>{errors.email}</Text>}
-                        			<TextInput placeholder='Password' placeholderTextColor='#979797' style={styles.password_input} autoCapitalize='none' onChangeText={handleChange('password')} value={values.password} onBlur={handleBlur('password')} />
-									{errors.password && touched.password && <Text style={{color: colors.red}}>{errors.password}</Text>}
-
-                        			<View style={styles.button}>
-                        			    <Button
-                        			        onPress={() => handleSubmit()}
-                        			        title="Login"
-                        			        color= {colors.white}
-                        			        accessibilityLabel="Learn more about this purple button"
-                        			    />
-                        			</View>
-								</View>
-							)}
-						</Formik>
-
-                        <View style={styles.no_account_container}>
-                            <Text style={styles.no_account_text}>Already have an account? </Text>
-
-                            <TouchableOpacity
-                                onPress={() => navigation.navigate("SignIn")}
-                            >
-                                <Text style={styles.login_input}>Login</Text>
-                            </TouchableOpacity>
-                        </View>
-
-                    </View>
-                
+            <View style={{width: ScreenWidth, flex: 1, flexDirection: 'column', alignItems: 'center', justifyContent: 'space-evenly'}}>
+                <View style={{width: ScreenWidth * .5, flexDirection: 'row', justifyContent: 'center'}}>
+                    <Text style={{color: colors.lightYellow, fontSize: 20}}>Welcome</Text>
+                    <Text> </Text>
+                    <Text style={styles.logo_text}>back!</Text>
+                </View>
+                <View style={{width: ScreenWidth * .6, justifyContent: 'center'}}>
+                    <Text style={styles.logo_text}>
+                        We're glad to have you back!
+                    </Text>
+                </View>
             </View>
+				<Formik
+					initialValues={{ email: '', password: ''}}
+					validationSchema={reviewSchema}
+					onSubmit={(values) => {
+                        auth.signIn(values);
+                    }}
+				>
+					{({ handleChange, handleBlur, handleSubmit, values, errors, touched }) => (
+						<View style={styles.form_container}>
+                            <View style={{flex: .7, justifyContent: 'space-evenly'}}>
+						    	<TextInput 
+                                  placeholder='Full Name' 
+                                  placeholderTextColor={colors.lightGray} 
+                                  style={styles.email_input} 
+                                  autoCapitalize='none' 
+                                  onChangeText={handleChange('email')} 
+                                  value={values.email} onBlur={handleBlur('email')} 
+                              />
+
+						    	{errors.email && touched.email && <Text style={{color: colors.red, marginVertical: ScreenHeight * .01}}>{errors.email}</Text>}
+
+						    	<TextInput 
+                                  placeholder='Email' 
+                                  placeholderTextColor={colors.lightGray} 
+                                  style={styles.email_input} 
+                                  autoCapitalize='none' 
+                                  onChangeText={handleChange('email')} 
+                                  value={values.email} onBlur={handleBlur('email')} 
+                              />
+
+						    	{errors.email && touched.email && <Text style={{color: colors.red, marginVertical: ScreenHeight * .01}}>{errors.email}</Text>}
+
+						    	<TextInput 
+                                  secureTextEntry={true} 
+                                  placeholder='Password' 
+                                  placeholderTextColor={colors.lightGray} 
+                                  style={styles.password_input} 
+                                  autoCapitalize='none' 
+                                  onChangeText={handleChange('password')} 
+                                  value={values.password} 
+                                  onBlur={handleBlur('password')} />
+
+						    	{errors.password && touched.password && <Text style={{color: colors.red, marginVertical: ScreenHeight * .01}}>{errors.password}</Text>}
+
+    	        		    	<TouchableOpacity>
+    	        		    	    <Text style={styles.forgot_password}>Forgot password?</Text>
+    	        		    	</TouchableOpacity>
+                            </View>
+                            <View style={{flexDirection: 'column', justifyContent: 'flex-end', alignItems: 'center'}}>
+                                <View style={{flexDirection: 'row', marginBottom: ScreenHeight * .01}}>
+                                    <Text style={{color: colors.white}}>
+                                        Already have an account?
+                                    </Text>
+                                    <Text> </Text>
+                                    <TouchableOpacity
+                                        onPress={() => navigation.navigate("SignIn")}
+                                    >
+                                        <Text style={{color: colors.lightYellow}}>Sign In!</Text>
+                                    </TouchableOpacity>
+                                </View>
+        	        			<View style={styles.button}>
+        	        			    <Button
+        	        			        onPress={(values) => handleSubmit(values)}
+        	        			        title="Sign Up"
+        	        			        color= {colors.black}
+        	        			        accessibilityLabel="Learn more about this purple button"
+        	        			    />
+        	        			</View>
+                            </View>
+						</View>
+							)}
+				</Formik>
         </View>
-  )
+    );
 }
+
 const styles = StyleSheet.create({
     root: {
         alignItems: 'center',
+        flexDirection: 'column',
+        justifyContent: 'space-evenly',
         width: ScreenWidth,
         height: ScreenHeight,
-        backgroundColor: colors.red,
+        backgroundColor: colors.black,
+		flex: 1,
     },
     logo: {
         width: 100,
@@ -80,58 +124,71 @@ const styles = StyleSheet.create({
     },
     logo_text: {
         color: colors.white,
-        fontSize: 35,
+        fontSize: 20,
         fontWeight: 'bold',
-        top: ScreenHeight / 5
+        textAlign: 'center'
     },
-    signup: {
+    signin: {
         position: 'absolute',
         width: ScreenWidth * 1.03,
         height: ScreenHeight * 0.66,
-        borderTopLeftRadius: 100,
-        borderTopRightRadius: 100,
+        borderTopLeftRadius: ScreenWidth * .2,
+        borderTopRightRadius: ScreenWidth * .2,
         backgroundColor: colors.white,
         bottom: 0,
-        padding: 50,
+        padding: ScreenWidth * .15,
     },
-    signup_text: {
+    signin_text: {
         color: colors.red,
         fontSize: 25,
         fontWeight: 'bold',
         marginBottom: ScreenHeight / 100,
     },
-    signup_text_small: {
+    signin_text_small: {
         color: colors.grey,
         fontSize: 14,
     },
     form_container: {
-        marginTop: ScreenHeight * .025,
+        flex: 2.3,
+        justifyContent: 'space-evenly'
     },
-    name_email_input: {
+    email_input: {
+        width: ScreenWidth * .8,
+        height: ScreenHeight * .08,
         fontSize: 18,
-        color: colors.black,
-        borderBottomColor: colors.red,
-        borderBottomWidth: 1,
-		marginTop: ScreenHeight * .03,
+        color: colors.white,
+        borderWidth: ScreenWidth * .009,
+        borderColor: colors.lightGray,
+        borderRadius: ScreenWidth * .04,
+        padding: ScreenWidth * .04
     },
     password_input: {
+        width: ScreenWidth * .8,
+        height: ScreenHeight * .08,
         fontSize: 18,
-        color: colors.black,
-        borderBottomColor: colors.red,
-        borderBottomWidth: 1,
-		marginTop: ScreenHeight * .03,
+        color: colors.white,
+        borderWidth: ScreenWidth * .009,
+        borderColor: colors.lightGray,
+        borderRadius: ScreenWidth * .04,
+        padding: ScreenWidth * .04
+    },
+    forgot_password: {
+        fontSize: 15,
+        color: colors.grey,
+        fontStyle: 'italic',
+        textAlign: 'right',
+        marginTop: 5,
     },
     button: {
         position: 'relative',
         alignSelf: 'center',
         alignContent: 'center',
         justifyContent: 'center',
-        backgroundColor: colors.red,
-        color: colors.white,
-        width: ScreenWidth / 2.5,
+        backgroundColor: colors.lightYellow,
+        color: colors.black,
+        width: ScreenWidth * .8,
         height: 50,
-        borderRadius: 120,
-        marginTop: 30,
+        borderRadius: ScreenWidth * .05,
     },
     no_account_container: {
         position: 'relative',
@@ -146,7 +203,7 @@ const styles = StyleSheet.create({
         color: colors.black,
         
     },
-    login_input: {
+    signup_input: {
         fontSize: 15,
         color: colors.red,
     },
