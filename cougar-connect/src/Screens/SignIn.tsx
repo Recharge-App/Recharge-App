@@ -15,85 +15,94 @@ const reviewSchema = yup.object({
 const SignIn = ({ navigation }) => {
 
     const auth = useAuth();
-	
-    return (
-        <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={styles.root}>
-        		<Text style={styles.logo_text}>UpCoogs</Text>
-            	<View style={styles.signin}>
-            	    <Text style={styles.signin_text}>Sign in</Text>
-            	    <Text style={styles.signin_text_small}>Enter your UH email and password</Text>
 
-            	        <View style={styles.form_container}>
-							<Formik
-								initialValues={{ email: '', password: ''}}
-								validationSchema={reviewSchema}
-								onSubmit={(values) => {
-                                    auth.signIn(values);
-                                }}
-							>
-								{({ handleChange, handleBlur, handleSubmit, values, errors, touched }) => (
-									<View>
-										<TextInput 
-                                            placeholder='Email' 
-                                            placeholderTextColor='#979797' 
-                                            style={styles.email_input} 
-                                            autoCapitalize='none' 
-                                            onChangeText={handleChange('email')} 
-                                            value={values.email} onBlur={handleBlur('email')} 
-                                        />
+    return(
+        <View style={styles.root}>
+            <View style={{width: ScreenWidth, flex: 1, flexDirection: 'column', alignItems: 'center', justifyContent: 'space-evenly'}}>
+                <View style={{width: ScreenWidth * .5, flexDirection: 'row', justifyContent: 'center'}}>
+                    <Text style={{color: colors.lightYellow, fontSize: 20}}>Let's</Text>
+                    <Text> </Text>
+                    <Text style={styles.logo_text}>get started!</Text>
+                </View>
+                <View style={{width: ScreenWidth * .6, justifyContent: 'center'}}>
+                    <Text style={styles.logo_text}>
+                        We're looking forward to having you!
+                    </Text>
+                </View>
+            </View>
+				<Formik
+					initialValues={{ email: '', password: ''}}
+					validationSchema={reviewSchema}
+					onSubmit={(values) => {
+                        auth.signIn(values);
+                    }}
+				>
+					{({ handleChange, handleBlur, handleSubmit, values, errors, touched }) => (
+						<View style={styles.form_container}>
+                            <View style={{flex: .5, justifyContent: 'space-evenly'}}>
+						    	<TextInput 
+                                  placeholder='Email' 
+                                  placeholderTextColor={colors.lightGray} 
+                                  style={styles.email_input} 
+                                  autoCapitalize='none' 
+                                  onChangeText={handleChange('email')} 
+                                  value={values.email} onBlur={handleBlur('email')} 
+                              />
 
-										{errors.email && touched.email && <Text style={{color: colors.red}}>{errors.email}</Text>}
+						    	{errors.email && touched.email && <Text style={{color: colors.red, marginVertical: ScreenHeight * .01}}>{errors.email}</Text>}
 
-										<TextInput 
-                                            secureTextEntry={true} 
-                                            placeholder='Password' 
-                                            placeholderTextColor='#979797' 
-                                            style={styles.password_input} 
-                                            autoCapitalize='none' 
-                                            onChangeText={handleChange('password')} 
-                                            value={values.password} 
-                                            onBlur={handleBlur('password')} />
+						    	<TextInput 
+                                  secureTextEntry={true} 
+                                  placeholder='Password' 
+                                  placeholderTextColor={colors.lightGray} 
+                                  style={styles.password_input} 
+                                  autoCapitalize='none' 
+                                  onChangeText={handleChange('password')} 
+                                  value={values.password} 
+                                  onBlur={handleBlur('password')} />
 
-										{errors.password && touched.password && <Text style={{color: colors.red}}>{errors.password}</Text>}
+						    	{errors.password && touched.password && <Text style={{color: colors.red, marginVertical: ScreenHeight * .01}}>{errors.password}</Text>}
 
-            	            			<TouchableOpacity>
-            	            			    <Text style={styles.forgot_password}>Forgot password?</Text>
-            	            			</TouchableOpacity>
-
-            	            			<View style={styles.button}>
-            	            			    <Button
-            	            			        onPress={(values) => handleSubmit(values)}
-            	            			        title="Login"
-            	            			        color= {colors.white}
-            	            			        accessibilityLabel="Learn more about this purple button"
-            	            			    />
-            	            			</View>
-									</View>
-								)}
-							</Formik>
-
-            	            <View style={styles.no_account_container}>
-            	                <Text style={styles.no_account_text}>Don't have an account? </Text>
-
-            	                <TouchableOpacity
-                                    onPress={() => navigation.navigate("SignUp")}
-                                >
-            	                    <Text style={styles.signup_input}>Sign Up</Text>
-            	                </TouchableOpacity>
-            	            </View>
-
-            	        </View>
-            	    
-            	</View>
-        </KeyboardAvoidingView>
-  )
+    	        		    	<TouchableOpacity>
+    	        		    	    <Text style={styles.forgot_password}>Forgot password?</Text>
+    	        		    	</TouchableOpacity>
+                            </View>
+                            <View style={{flexDirection: 'column', justifyContent: 'flex-end', alignItems: 'center'}}>
+                                <View style={{flexDirection: 'row', marginBottom: ScreenHeight * .01}}>
+                                    <Text style={{color: colors.white}}>
+                                        Don't have an account?
+                                    </Text>
+                                    <Text> </Text>
+                                    <TouchableOpacity
+                                        onPress={() => navigation.navigate("SignUp")}
+                                    >
+                                        <Text style={{color: colors.lightYellow}}>Sign up!</Text>
+                                    </TouchableOpacity>
+                                </View>
+        	        			<View style={styles.button}>
+        	        			    <Button
+        	        			        onPress={(values) => handleSubmit(values)}
+        	        			        title="Login"
+        	        			        color= {colors.black}
+        	        			        accessibilityLabel="Learn more about this purple button"
+        	        			    />
+        	        			</View>
+                            </View>
+						</View>
+							)}
+				</Formik>
+        </View>
+    );
 }
+
 const styles = StyleSheet.create({
     root: {
         alignItems: 'center',
+        flexDirection: 'column',
+        justifyContent: 'space-evenly',
         width: ScreenWidth,
         height: ScreenHeight,
-        backgroundColor: colors.red,
+        backgroundColor: colors.black,
 		flex: 1,
     },
     logo: {
@@ -104,9 +113,9 @@ const styles = StyleSheet.create({
     },
     logo_text: {
         color: colors.white,
-        fontSize: 35,
+        fontSize: 20,
         fontWeight: 'bold',
-        top: ScreenHeight * .2
+        textAlign: 'center'
     },
     signin: {
         position: 'absolute',
@@ -129,20 +138,28 @@ const styles = StyleSheet.create({
         fontSize: 14,
     },
     form_container: {
-        marginTop: 70,
+        flex: 2.3,
+        justifyContent: 'space-evenly'
     },
     email_input: {
+        width: ScreenWidth * .8,
+        height: ScreenHeight * .08,
         fontSize: 18,
-        color: colors.black,
-        borderBottomColor: colors.red,
-        borderBottomWidth: 1,
+        color: colors.white,
+        borderWidth: ScreenWidth * .009,
+        borderColor: colors.lightGray,
+        borderRadius: ScreenWidth * .04,
+        padding: ScreenWidth * .04
     },
     password_input: {
+        width: ScreenWidth * .8,
+        height: ScreenHeight * .08,
         fontSize: 18,
-        color: colors.black,
-        borderBottomColor: colors.red,
-        borderBottomWidth: 1,
-		marginTop: ScreenHeight * .03,
+        color: colors.white,
+        borderWidth: ScreenWidth * .009,
+        borderColor: colors.lightGray,
+        borderRadius: ScreenWidth * .04,
+        padding: ScreenWidth * .04
     },
     forgot_password: {
         fontSize: 15,
@@ -156,12 +173,11 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         alignContent: 'center',
         justifyContent: 'center',
-        backgroundColor: colors.red,
-        color: colors.white,
-        width: ScreenWidth / 2.5,
+        backgroundColor: colors.lightYellow,
+        color: colors.black,
+        width: ScreenWidth * .8,
         height: 50,
-        borderRadius: 120,
-        marginTop: 30,
+        borderRadius: ScreenWidth * .05,
     },
     no_account_container: {
         position: 'relative',
