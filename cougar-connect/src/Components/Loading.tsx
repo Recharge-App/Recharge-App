@@ -10,7 +10,7 @@ const Loading = () => {
             <View style={styles.content}>
                 <Image source={require("../../assets/images/Loading-Ring.gif")} />
                 <Text style={styles.didYouKnowText}>Did you know?</Text>
-                <Text style={{color: colors.white}}>ur mum gay lol</Text>
+                <Text style={{color: colors.white}}>Recharge is the best!</Text>
             </View>
         </View>
     );
