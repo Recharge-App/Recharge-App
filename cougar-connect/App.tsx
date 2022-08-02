@@ -3,14 +3,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import Stacks from './src/Navigation/Tabs';
 import { StatusBar } from 'react-native'
 import { ToastProvider } from 'react-native-toast-notifications';
-import SignIn from './src/Screens/SignIn';
-import SignUp from './src/Screens/SignUp';
-import Onboarding from './src/Screens/Onboarding';
-import Tinder from './src/Screens/Tinder';
-import Follow from './src/Screens/Follow';
 import { AuthProvider } from './src/Components/Authentication';
 import 'react-native-gesture-handler';
-import Loading from './src/Components/Loading';
+import Calendar from './src/Screens/Calendar';
 
 // Import fonts here
 // https://docs.expo.dev/guides/using-custom-fonts/
@@ -46,17 +41,13 @@ function App() {
 	return (
 		// Change this to switch between the login screen and the home screen
 	
-		//<Onboarding />
-		//<SignIn />
-	  	//<SignUp />
-		//<Tinder/>
-		//<Follow/>
 		<ToastProvider>
 			<StatusBar hidden />
         	<AuthProvider>
 				<Stacks />
         	</AuthProvider>
 		</ToastProvider>
+		//<Calendar navigation={navigator}/>
 	);
 }
 
