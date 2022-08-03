@@ -119,7 +119,7 @@ function Calendar({ navigation }: { navigation: any }) {
 							horizontal={true} 
 							pagingEnabled={true} 
 							hideArrows={false}
-							markingType={'period'}
+							markingType={'dot'}
 							theme={{
 								backgroundColor: colors.black,
 								calendarBackground: colors.black,
