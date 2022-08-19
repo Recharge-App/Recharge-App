@@ -12,6 +12,7 @@ import TopTab from './TopTab';
 import Onboarding from '../Screens/Onboarding';
 import { useAuth } from '../Components/Authentication';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import CreateEvent from "../Screens/CreateEvent";
 
 // https://reactnavigation.org/docs/auth-flow/
 // https://reactnavigation.org/docs/stack-navigator/
@@ -64,7 +65,7 @@ const AppTab = () => {
                 ),
             }}
             />
-            <Tab.Screen name="Add" component={TopTab} options={{
+            <Tab.Screen name="Add" component={CreateEvent} options={{
                 headerShown: false,
                 tabBarIcon: ({focused}) => (
                     <Ionicons name="add-circle" size={40} 
