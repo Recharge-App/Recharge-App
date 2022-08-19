@@ -4,7 +4,6 @@ import EventCards, {eventProps} from '../Components/EventCards';
 import { ScreenWidth, ScreenHeight } from '../Components/Dimensions';
 import { styleProp, EventModal } from '../Components/EventModal';
 import { colors } from '../Components/Colors';
-import { fonts } from '../Components/Fonts';
 
 
 function Home({ navigation }: { navigation: any }) {
