@@ -1,6 +1,6 @@
 import {useState} from "react";
 import { View, Text, StyleSheet, Button, Platform } from "react-native";
-import DateTimePicker from '@react-native-community/datetimepicker';
+import RNDateTimePicker from '@react-native-community/datetimepicker';
 import {colors} from "../Components/Colors";
 import { ScreenHeight, ScreenWidth } from "../Components/Dimensions";
 import Input from "../Components/Input";
@@ -8,28 +8,24 @@ import SubmitButton from "../Components/SubmitButton";
 
 
 const CreateEvent = () => {
+
     const [date, setDate] = useState(new Date(1598051730000));
-    const [mode, setMode] = useState('date');
+    const [mode, setMode] = useState('time');
     const [show, setShow] = useState(true);
 
-    const onChange = (event, selectedDate: Date) => {
+    const onChange = (event, selectedDate) => {
         const currentDate = selectedDate;
         //setShow(false);
         setDate(currentDate);
     };
 
-    /*
-    const showMode = (currentMode: string) => {
+    const showMode = (currentMode) => {
         if (Platform.OS === 'android') {
             setShow(false);
             // for iOS, add a button that closes the picker
         }
         setMode(currentMode);
     };
-    */
-    const showMode = (currentMode: string) => {
-        setMode(currentMode);
-    }
 
     const showDatepicker = () => {
         showMode('date');
@@ -41,21 +37,39 @@ const CreateEvent = () => {
 
     return (
         <View style={styles.root}>
-            <Input placeholder={"Event Name"}/>
-            <Input placeholder={"Location"}/>
-            <Text style={{color: colors.white}}>selected: {date.toLocaleString()}</Text>
-            {show && (
-                <DateTimePicker
-                    testID="dateTimePicker"
-                    value={date}
-                    mode={mode}
-                    is24Hour={true}
-                    onChange={onChange}
-                    display="default"
-                    themeVariant="dark"
-                />
-            )}
-            <SubmitButton title="Create Event" />
+            <View style={{flex: .5, justifyContent: 'space-evenly', alignItems: 'center'}}>
+                <Input placeholder={"Event Name"}/>
+                <Input placeholder={"Location"}/>
+            </View>
+            <View style={{flex: .3, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly'}}>
+                {show &&
+                    <RNDateTimePicker
+                        testID="dateTimePicker"
+                        value={date}
+                        mode={mode}
+                        is24Hour={true}
+                        display="default"
+                        themeVariant="dark"
+                        onChange={onChange}
+                        style={{width: ScreenWidth * .24}}
+                    />
+                }
+                {show &&
+                    <RNDateTimePicker
+                        testID="dateTimePicker"
+                        value={date}
+                        mode="date"
+                        is24Hour={true}
+                        display="default"
+                        themeVariant="dark"
+                        onChange={onChange}
+                        style={{width: ScreenWidth * .22}}
+                    />
+                }
+            </View>
+            <View style={{flex: .3, justifyContent: 'space-evenly'}}>
+                <SubmitButton title="Create Event" />
+            </View>
         </View>
     );
 }
@@ -63,13 +77,11 @@ const CreateEvent = () => {
 
 const styles = StyleSheet.create({
     root: {
-        height: ScreenHeight,
+        flex: 1,
         flexDirection: 'column',
-        justifyContent: 'center',
+        justifyContent: 'space-around',
         backgroundColor: colors.black,
         paddingBottom: ScreenHeight * .1,
-        borderColor: colors.white,
-        borderWidth: 1,
     }
 });
 
