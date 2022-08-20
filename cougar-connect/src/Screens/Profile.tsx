@@ -9,6 +9,7 @@ import EventCards from '../Components/EventCards';
 import SignIn from './SignIn';
 import { Avatar } from '@rneui/base';
 import { useAuth } from '../Components/Authentication';
+import Settings from "./Settings";
 
 
 function Profile({ navigation }: { navigation: any }) {
@@ -75,7 +76,7 @@ function Profile({ navigation }: { navigation: any }) {
 					<View>
 	  					<View style={styles.header}>
 							<View style={{flexDirection: 'row', justifyContent: 'space-between', width: ScreenWidth}}>
-								<TouchableOpacity style={{alignSelf: 'flex-start', marginLeft: ScreenWidth * .05}}>
+								<TouchableOpacity style={{alignSelf: 'flex-start', marginLeft: ScreenWidth * .05}} onPress={() => navigation.navigate('Settings')}>
 									<Ionicons name='md-settings-outline' color={colors.lightYellow} size={ScreenHeight* .035}></Ionicons>
 								</TouchableOpacity>
 								<TouchableOpacity 

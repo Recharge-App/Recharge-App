@@ -13,6 +13,7 @@ import Onboarding from '../Screens/Onboarding';
 import { useAuth } from '../Components/Authentication';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import CreateEvent from "../Screens/CreateEvent";
+import Settings from "../Screens/Settings";
 
 // https://reactnavigation.org/docs/auth-flow/
 // https://reactnavigation.org/docs/stack-navigator/
@@ -22,6 +23,7 @@ const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
 
+// Stuff that appears on the tabs
 const AppTab = () => {
 
     return(
@@ -101,6 +103,7 @@ const AppTab = () => {
     )
 }
 
+// Stuff to load when not identified/authenticated
 const AuthStack = () => {
     
     return(
@@ -138,11 +141,18 @@ const Stacks = () => {
                         headerShown: false
                     }}
                 >
+                    {/*AppTab and Misc screens*/}
                     {authData?.authenticated ? (
-                        <Stack.Screen
-                            name="App"
-                            component={AppTab}
-                        />
+                        <>
+                            <Stack.Screen
+                                name="App"
+                                component={AppTab}
+                            />
+                            <Stack.Screen
+                                name="Settings"
+                                component={Settings}
+                            />
+                        </>
                     ) : (
                         <Stack.Screen
                             name="Auth"
