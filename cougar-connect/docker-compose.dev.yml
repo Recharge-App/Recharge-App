@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  frontend:
+    restart: always
+    build:
+        context: ./Recharge-App/cougar-connect/
+        dockerfile: Dockerfile
+    container_name: frontend
+    ports:
+      - 19000:19000
+      - 19001:19000
+      - 19002:19000
+      - 19006:19006
+    volumes:
+      - ./Recharge-App/cougar-connect/src:/opt/react_native_app/src
