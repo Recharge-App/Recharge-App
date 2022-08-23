@@ -14,13 +14,21 @@ services:
   #    - 19006:19006
   #  volumes:
   #    - ./Recharge-App/cougar-connect/src:/opt/react_native_app/src
-  backend:
-    restart: always
-    build:
-        context: ./Recharge-Backend/
-        dockerfile: Dockerfile
-    container_name: backend
-    ports:
-      - 8080:8080
-        #volumes:
-        #  - ./Recharge-Backend/src/:/usr/actix/src
+  #backend:
+  #  restart: always
+  #  build:
+  #      context: ./Recharge-Backend/
+  #      dockerfile: Dockerfile
+  #  container_name: backend
+  #  ports:
+  #    - 8080:8080
+  #      #volumes:
+  #      #  - ./Recharge-Backend/src/:/usr/actix/src
+  #db:
+  #  image: mariadb
+  #  restart: always
+  #  env_file: ./Recharge-Database/.env
+  #  volumes:
+  #    - ./Recharge-Database/mysql_data:/var/lib/mysql
+  #  ports:
+  #    - 3306:3306
