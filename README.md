@@ -15,6 +15,7 @@ This is CougarConnect, a mobile app that helps build vibrant communities at the 
 	- Recharge-Database
 2. Run `docker-compose -f docker-compose.dev.yml build --no-cache && docker-compose -f docker-compose.dev.yml up` to start the containers
 3. Run `docker-compose -f docker-compose.dev.yml down` to stop the containers
+4. Interact with `mariadb` container with `mysql -u root -ppassword -h 0.0.0.0 -D recharge`
 
 ## Resources
 - [React Native Props documentation](https://reactnative.dev/docs/layout-props)
