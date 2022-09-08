@@ -1,6 +1,6 @@
-# CougarConnect
+# Recharge
 
-This is CougarConnect, a mobile app that helps build vibrant communities at the University of Houston.
+This is Recharge, a mobile app that helps build vibrant communities at the University of Houston.
 
 ## Development Setup
 ~~1. Use `yarn install` to install node modules~~<br>
